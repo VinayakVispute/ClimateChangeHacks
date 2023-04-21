@@ -15,7 +15,86 @@ function CarbonFootprintCalculator({
 
 }) {
   // Define the carbon footprint calculation logic here
-  const carbonFootprint = NumResidents * 100;
+  var carbonFootprint = NumResidents * 100;
+  //maps
+  const numResidentsMap = {
+    1: 20.21,
+    2: 16.03,
+    3: 13.47,
+    4: 12.20,
+    5: 11.35,
+    "6+": 10.22,
+  };
+  const LivingTypeMap = {
+    "Detached Single family home": 1.41,
+    "attached Single family home": -0.67,
+    "Apartment": -0.81,
+    "Apartment(5+)": -4.16,
+    "Mobile Home": -3.49,
+  
+  };
+  const HouseSizeMap={
+    "Under 500 sq ft":-2.52,
+    "500-1000 sq ft":-3.02,
+    "1000-1500 sq ft":-2.52,
+    "1500-2000 sq ft":-0.38
+  }
+  const cleanEnergyMap={
+    "Yes,some":-19.02+17.62,
+    "Yes,most":-19.02+16.17,
+    "Yes,all":-19.02+14.76,
+    "No":0
+  }
+   
+  carbonFootprint =
+  NumResidents in numResidentsMap
+    ? numResidentsMap[NumResidents]
+    : "Not avialable";
+    carbonFootprint +=
+    LivingType in LivingTypeMap
+    ? LivingTypeMap[LivingType]
+    : "Not avialable";
+    
+    carbonFootprint +=
+    HouseSize in HouseSizeMap
+    ? HouseSizeMap[HouseSize]
+    : "Not avialable";
+
+    carbonFootprint +=
+cleanEnergy in cleanEnergyMap
+    ? cleanEnergyMap[cleanEnergy]
+    : "Not avialable";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   return (
     <div>
