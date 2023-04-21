@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import CarbonFootprintCalculator from './CarbonFootprintCalculator';
 
 
 export default function EventForm() {
@@ -20,6 +20,7 @@ export default function EventForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
     console.log(`NumResidents: ${NumResidents}`);
     console.log(`LivingType: ${LivingType}`);
     console.log(`HouseSize: ${HouseSIze}`);
@@ -275,7 +276,22 @@ export default function EventForm() {
 
   <button type="submit" class="cursor-pointer font-roboto font-helvetica-neue font-sans  text-base bg-green-600 border-0 box-border text-white font-semibold block mx-auto my-10 py-5 px-10 text-center w-full">Submit</button>
 </form>
-    </div> 
+<CarbonFootprintCalculator
+     NumResidents={NumResidents}
+     LivingType={LivingType}
+     HouseSize={HouseSIze}
+     cleanEnergy={cleanEnergy}
+     Recycle={Recycle}
+     DietType={DietType}
+     LongFlights={LongFlights}
+     shortFlights={shortFlights}
+     mediumFlights={mediumFlights}
+     hotel={hotel}
+    
+   
+   />
+    </div>
+
     ); 
     }   
 
