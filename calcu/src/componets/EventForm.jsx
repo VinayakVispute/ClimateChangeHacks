@@ -9,10 +9,10 @@ export default function EventForm() {
   const [cleanEnergy, setcleanEnergy] = useState('');
   const [Recycle, setRecycle] = useState('');
   const [DietType, setDietType] = useState('');
-  const [carDistance, setCarDistance] = useState('');
-  const [numHotelRooms, setNumHotelRooms] = useState('');
-  const [numMealsPerDay, setNumMealsPerDay] = useState('');
-  const [mealType, setMealType] = useState('');
+  // const [carDistance, setCarDistance] = useState('');
+  // const [numHotelRooms, setNumHotelRooms] = useState('');
+  // const [numMealsPerDay, setNumMealsPerDay] = useState('');
+  // const [mealType, setMealType] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -164,6 +164,95 @@ export default function EventForm() {
         </div>
       ))}
   </div>
+  <section>
+    <h1>This is Travel section</h1>
+  <div className='main-div'>
+        <label htmlFor="HouseSIze">Number of long round-trip flights (2500+ miles) I make in a year</label>
+        <select 
+                className='tap-highlight-transparent text-base antialiased box-border align-baseline font-roboto appearance-none bg-transparent bg-no-repeat bg-center-right border border-solid border-gray-700 shadow-none py-2 px-4 rounded-none w-full'
+
+          id="HouseSIze"
+          value={HouseSIze}
+          onChange={(event) => setHouseSIze(event.target.value)}
+        >
+                     <option value="">Select your option</option>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+           <option value="5-9">5 to 9</option>
+           <option value="9-14">9-14</option>
+
+       
+        </select>
+      </div>
+      <div className='main-div'>
+        <label htmlFor="HouseSIze">Number of medium round-trip flights (300-2500 miles one way) I make in a year</label>
+        <select 
+                className='tap-highlight-transparent text-base antialiased box-border align-baseline font-roboto appearance-none bg-transparent bg-no-repeat bg-center-right border border-solid border-gray-700 shadow-none py-2 px-4 rounded-none w-full'
+
+          id="HouseSIze"
+          value={HouseSIze}
+          onChange={(event) => setHouseSIze(event.target.value)}
+        >
+          <option value="">Select your option</option>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+           <option value="5-9">5 to 9</option>
+           <option value="9-14">9-14</option>
+
+        </select>
+      </div>
+      <div className='main-div'>
+        <label htmlFor="HouseSIze">Number of short round-trip flights less than 300 miles one way I make in a year
+</label>
+        <select 
+                className='tap-highlight-transparent text-base antialiased box-border align-baseline font-roboto appearance-none bg-transparent bg-no-repeat bg-center-right border border-solid border-gray-700 shadow-none py-2 px-4 rounded-none w-full'
+
+          id="HouseSIze"
+          value={HouseSIze}
+          onChange={(event) => setHouseSIze(event.target.value)}
+        >
+                     <option value="">Select your option</option>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+           <option value="5-9">5 to 9</option>
+           <option value="9-14">9-14</option>
+
+       
+        </select>
+      </div>
+      <div className='main-div'>
+        <label htmlFor="HouseSIze">Average number of nights spent in a hotel per year
+</label>
+        <select 
+                className='tap-highlight-transparent text-base antialiased box-border align-baseline font-roboto appearance-none bg-transparent bg-no-repeat bg-center-right border border-solid border-gray-700 shadow-none py-2 px-4 rounded-none w-full'
+
+          id="HouseSIze"
+          value={HouseSIze}
+          onChange={(event) => setHouseSIze(event.target.value)}
+        >
+                     <option value="">Select your option</option>
+          <option value="0">0</option>
+          <option value="1 to 2 nights">1 to 2 nights</option>
+          <option value="3-4 nights">3 to 4 nights</option>
+          <option value="5-6 nights">5 to 6 nights</option>
+          <option value="1-2 weeks">1-2 weeks</option>
+           <option value="3-4">3-4 weeks</option>
+           <option value="1-2">1-2 months</option>
+    
+
+       
+        </select>
+      </div>
+      </section>
 
   <button type="submit" class="cursor-pointer font-roboto font-helvetica-neue font-sans  text-base bg-green-600 border-0 box-border text-white font-semibold block mx-auto my-10 py-5 px-10 text-center w-full">Submit</button>
 </form>
