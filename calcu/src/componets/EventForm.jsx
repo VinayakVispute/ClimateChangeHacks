@@ -9,6 +9,10 @@ export default function EventForm() {
   const [cleanEnergy, setcleanEnergy] = useState('');
   const [Recycle, setRecycle] = useState('');
   const [DietType, setDietType] = useState('');
+  const [LongFlights,setLongFlights]=useState('');
+  const [mediumFlights,setmediumFlights]=useState('');
+  const [shortFlights,setshortFlights]=useState('');
+  const [hotel,sethotel]=useState('');
   // const [carDistance, setCarDistance] = useState('');
   // const [numHotelRooms, setNumHotelRooms] = useState('');
   // const [numMealsPerDay, setNumMealsPerDay] = useState('');
@@ -16,6 +20,18 @@ export default function EventForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log(`NumResidents: ${NumResidents}`);
+    console.log(`LivingType: ${LivingType}`);
+    console.log(`HouseSize: ${HouseSIze}`);
+    console.log(`cleanEnergy: ${cleanEnergy}`);
+    console.log(`Recycle: ${Recycle}`);
+    console.log(`DietType: ${DietType}`);
+    console.log(`LongFlights: ${LongFlights}`);
+    console.log(`shortFlights: ${shortFlights}`);
+    console.log(`mediumFlights: ${mediumFlights}`);
+    console.log(`hotel: ${hotel}`);
+    console.log(`selectedOptions: ${selectedOptions}`);
+
 
   };
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -40,6 +56,8 @@ export default function EventForm() {
 
     <div  className="w-full tap-highlight-transparent text-base antialiased text-opacity-87 box-border block padding-4">
     <form onSubmit={handleSubmit} className='text-center gap-5 font-bold'   >
+    <section>
+    <h1>This is Household section</h1>
       <div className='main-div'>
         <label htmlFor="NumResidents">Number of residents including myself:
 </label>
@@ -164,16 +182,17 @@ export default function EventForm() {
         </div>
       ))}
   </div>
+  </section>
   <section>
     <h1>This is Travel section</h1>
   <div className='main-div'>
-        <label htmlFor="HouseSIze">Number of long round-trip flights (2500+ miles) I make in a year</label>
+        <label htmlFor="LongFlights">Number of long round-trip flights (2500+ miles) I make in a year</label>
         <select 
                 className='tap-highlight-transparent text-base antialiased box-border align-baseline font-roboto appearance-none bg-transparent bg-no-repeat bg-center-right border border-solid border-gray-700 shadow-none py-2 px-4 rounded-none w-full'
 
-          id="HouseSIze"
-          value={HouseSIze}
-          onChange={(event) => setHouseSIze(event.target.value)}
+          id="LongFlights"
+          value={LongFlights}
+          onChange={(event) => setLongFlights(event.target.value)}
         >
                      <option value="">Select your option</option>
           <option value="0">0</option>
@@ -188,13 +207,13 @@ export default function EventForm() {
         </select>
       </div>
       <div className='main-div'>
-        <label htmlFor="HouseSIze">Number of medium round-trip flights (300-2500 miles one way) I make in a year</label>
+        <label htmlFor="mediumFlights">Number of medium round-trip flights (300-2500 miles one way) I make in a year</label>
         <select 
                 className='tap-highlight-transparent text-base antialiased box-border align-baseline font-roboto appearance-none bg-transparent bg-no-repeat bg-center-right border border-solid border-gray-700 shadow-none py-2 px-4 rounded-none w-full'
 
-          id="HouseSIze"
-          value={HouseSIze}
-          onChange={(event) => setHouseSIze(event.target.value)}
+          id="mediumFlights"
+          value={mediumFlights}
+          onChange={(event) => setmediumFlights(event.target.value)}
         >
           <option value="">Select your option</option>
           <option value="0">0</option>
@@ -208,14 +227,14 @@ export default function EventForm() {
         </select>
       </div>
       <div className='main-div'>
-        <label htmlFor="HouseSIze">Number of short round-trip flights less than 300 miles one way I make in a year
+        <label htmlFor="shortFlights">Number of short round-trip flights less than 300 miles one way I make in a year
 </label>
         <select 
                 className='tap-highlight-transparent text-base antialiased box-border align-baseline font-roboto appearance-none bg-transparent bg-no-repeat bg-center-right border border-solid border-gray-700 shadow-none py-2 px-4 rounded-none w-full'
 
-          id="HouseSIze"
-          value={HouseSIze}
-          onChange={(event) => setHouseSIze(event.target.value)}
+          id="shortFlights"
+          value={shortFlights}
+          onChange={(event) => setshortFlights(event.target.value)}
         >
                      <option value="">Select your option</option>
           <option value="0">0</option>
@@ -230,14 +249,14 @@ export default function EventForm() {
         </select>
       </div>
       <div className='main-div'>
-        <label htmlFor="HouseSIze">Average number of nights spent in a hotel per year
+        <label htmlFor="hotel">Average number of nights spent in a hotel per year
 </label>
         <select 
                 className='tap-highlight-transparent text-base antialiased box-border align-baseline font-roboto appearance-none bg-transparent bg-no-repeat bg-center-right border border-solid border-gray-700 shadow-none py-2 px-4 rounded-none w-full'
 
-          id="HouseSIze"
-          value={HouseSIze}
-          onChange={(event) => setHouseSIze(event.target.value)}
+          id="hotel"
+          value={hotel}
+          onChange={(event) => sethotel(event.target.value)}
         >
                      <option value="">Select your option</option>
           <option value="0">0</option>
