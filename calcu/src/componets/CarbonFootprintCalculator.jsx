@@ -61,7 +61,7 @@ function CarbonFootprintCalculator({
   const selectedOptionsMap={
 
     "I have programmable thermostat":15.40-16.48,
-    "I use energy star appliances":15.67-16.48,
+    "I use energy star appliances":15.67-16.48+0.09,
     "I use energy efficient lightbulbs":15.88-16.48,
     "I line dry my laundry":16.38-16.48
     
@@ -88,20 +88,24 @@ cleanEnergy in cleanEnergyMap
     carbonFootprint +=
     Recycle in RecycleMap
         ? RecycleMap[Recycle]
-        : 0;
+        : "0";
 
         carbonFootprint +=
     DietType in DietTypeMap
         ? DietTypeMap[DietType]
-        : 0;
+        : "0";
     
 
     console.log(selectedOptions);
 
+    for (const option of selectedOptions) {
+        if (option in selectedOptionsMap) {
+          carbonFootprint =parseFloat(carbonFootprint) + parseFloat(selectedOptionsMap[option]);
+        }
+      }
 
 
-
-console.log(carbonFootprint);
+console.log(typeof(carbonFootprint));
 
 
 
