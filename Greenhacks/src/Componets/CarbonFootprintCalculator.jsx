@@ -278,18 +278,9 @@ console.log(typeof(carbonFootprint));
   return (
     <div>
       <h2>Carbon Footprint Calculator</h2>
-      {/* <p>NumResidents: {NumResidents}</p>
-      <p>LivingType: {LivingType}</p>
-      <p>HouseSize: {HouseSize}</p>
-      <p>cleanEnergy: {cleanEnergy}</p>
-      <p>Recycle: {Recycle}</p>
-      <p>DietType: {DietType}</p>
-      <p>     LongFlights:{LongFlights}</p>
-      <p> shortFlights:{shortFlights}</p>
-      <p>mediumFlights:{mediumFlights}</p>
-      <p>hotel: {hotel}</p> */}
+
       <p>Offset using {parseInt(carbonFootprint/0.07)} trees</p>
-      <p>Carbon Footprint: {carbonFootprint} ton CO2e</p>
+      <p>Carbon Footprint: {carbonFootprint} ton CO2</p>
     </div>
   );
 }
