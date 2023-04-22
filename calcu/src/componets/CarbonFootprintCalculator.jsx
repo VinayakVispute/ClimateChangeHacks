@@ -118,7 +118,40 @@ function CarbonFootprintCalculator({
     "80-99 MPG":82
   }
   const hotelMap={
-    
+    "1 to 2 nights":15.73-15.67,
+    "3 -4 nights":15.81-15.67,
+    "5-6 nights":15.89-15.67,
+    "1-2 weeks":15.89-15.67,
+    "3-4 weeks":16.61-15.67,
+    "1-2 months":17.40-15.67,
+
+  }
+  const LongFlightsMap={
+    "0":0,
+    "1":0.85,
+    "2":0.85*2,
+    "3":0.85*3,
+    "4":0.85*4,
+    "5 to 9":0.85*7,
+    "9-14":0.85*11,
+  }
+  const shortFlightsMap={
+    "0":0,
+    "1":0.4,
+    "2":0.4*2,
+    "3":0.4*3,
+    "4":0.4*4,
+    "5 to 9":0.4*7,
+    "9-14":0.4*11.5,
+  }
+  const mediumFlightsMap={
+    "0":0,
+    "1":0.08,
+    "2":0.08*2,
+    "3":0.08*3,
+    "4":0.08*4,
+    "5 to 9":0.08*7,
+    "9-14":0.08*11.5,
   }
 
   carbonFootprint =
@@ -160,7 +193,7 @@ cleanEnergy in cleanEnergyMap
       }
 
 
-console.log(carbonFootprint);
+      console.log(carbonFootprint);
 
 
 
@@ -194,7 +227,26 @@ console.log(carbonFootprint);
 
              carbonFootprint += (m/mpg)*0.0089 ;
       }
+      carbonFootprint +=
+      hotel in hotelMap
+          ? parseFloat(hotelMap[hotel])
+          : "0";
+          if(LongFlights)
+          {
+            carbonFootprint =parseFloat(carbonFootprint)+LongFlightsMap[LongFlights];
+          }
+          if(shortFlights)
+          {
+            carbonFootprint =parseFloat(carbonFootprint)+shortFlightsMap[shortFlights];
+          }
+          if(mediumFlights)
+          {
+            carbonFootprint =parseFloat(carbonFootprint)+mediumFlightsMap[mediumFlights];
+          }
 
+
+            console.log(carbonFootprint);
+  
 
 console.log(typeof(carbonFootprint));
 
@@ -236,7 +288,8 @@ console.log(typeof(carbonFootprint));
       <p> shortFlights:{shortFlights}</p>
       <p>mediumFlights:{mediumFlights}</p>
       <p>hotel: {hotel}</p> */}
-      <p>Carbon Footprint: {carbonFootprint} kg CO2e</p>
+      <p>Offset using {parseInt(carbonFootprint/0.07)} trees</p>
+      <p>Carbon Footprint: {carbonFootprint} ton CO2e</p>
     </div>
   );
 }

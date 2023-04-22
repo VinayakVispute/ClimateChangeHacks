@@ -42,7 +42,7 @@ export default function EventForm() {
     console.log(`mediumFlights: ${mediumFlights}`);
     console.log(`hotel: ${hotel}`);
     console.log(`selectedOptions: ${selectedOptions}`);
-    
+
 
 
   };
@@ -110,7 +110,7 @@ const option1="Yes";
         >
           <option value="">Select your option</option>
           <option value="Detached Single family home">Detached Single family home</option>
-          <option value="attacched Single family home">attached Single family home</option>
+          <option value="attached Single family home">attached Single family home</option>
           <option value="Apartment">Apartment</option>
           {/* <option value="Detached Single family home">Detached Single family home</option> */}
           
@@ -440,8 +440,8 @@ const option1="Yes";
           <option value="3-4 nights">3 to 4 nights</option>
           <option value="5-6 nights">5 to 6 nights</option>
           <option value="1-2 weeks">1-2 weeks</option>
-           <option value="3-4">3-4 weeks</option>
-           <option value="1-2">1-2 months</option>
+           <option value="3-4 weeks">3-4 weeks</option>
+           <option value="1-2 months">1-2 months</option>
     
 
        
