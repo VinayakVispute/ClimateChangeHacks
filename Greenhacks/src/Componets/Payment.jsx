@@ -1,6 +1,10 @@
 import { useState } from "react";
 
-function Payment() {
+function Payment({
+  trees,
+  carbonFootprint
+
+}) {
   const [sliderValue, setSliderValue] = useState(0);
 
   const handleSliderChange = (event) => {
@@ -16,9 +20,9 @@ function Payment() {
               Your Carbon Footprint
             </h2>
             <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">
-              Your Footprint is{" "}
+              Your Carbon  Footprint is  {parseFloat(carbonFootprint)} 
               <span className="text-indigo-600" id="carbon-footprint"></span>{" "}
-              Tons
+                Tons
             </p>
             <p className="relative mt-4 max-w-2xl text-xl text-white lg:mx-auto">
               <span

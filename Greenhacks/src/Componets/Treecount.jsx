@@ -1,6 +1,11 @@
 import React from 'react'
 
-const Treecount = () => {
+const Treecount = (
+  {
+    trees,
+    carbonFootprint
+  }
+) => {
   return (
     <div>
       <section class="text-center">
@@ -15,7 +20,7 @@ const Treecount = () => {
           class="inline-block border-2 border-gray-300 rounded-full p-8 text-center text-xl"
         >
           Your carbon footprint is equivalent to<br />
-          <strong class="text-3xl font-bold">196</strong><br />
+          <strong class="text-3xl font-bold">{trees}</strong><br />
           <span class="text-sm">TREES</span>
         </div>
       </div>

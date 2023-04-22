@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import CarbonFootprintCalculator from './CarbonFootprintCalculator';
 import { Navigate, useNavigate } from "react-router-dom";
-
+import Result from './Pages/Result';
 
 export default function EventForm() {
   const [NumResidents, setNumResidents] = useState('');
@@ -86,7 +86,7 @@ const option1="Yes";
     <div  className="w-full tap-highlight-transparent text-base antialiased text-opacity-87 box-border block padding-4">
     {issubmit ? (
       <div>
-        <CarbonFootprintCalculator
+    < Result
      NumResidents={NumResidents}
      LivingType={LivingType}
      HouseSize={HouseSIze}

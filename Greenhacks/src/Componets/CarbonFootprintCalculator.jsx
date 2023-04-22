@@ -265,6 +265,7 @@ console.log(typeof(carbonFootprint));
 
 
 
+const Trees=parseInt(carbonFootprint/0.07);
 
 
 
