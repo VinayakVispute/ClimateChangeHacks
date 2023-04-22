@@ -10,6 +10,7 @@ export default function Result() {
 
 return(
 <div>
+
 <Payment / >
  <Normalinfo / >
 <Treecount / > 
