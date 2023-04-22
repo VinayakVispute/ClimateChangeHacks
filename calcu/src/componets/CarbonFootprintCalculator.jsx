@@ -72,7 +72,8 @@ function CarbonFootprintCalculator({
     "I have programmable thermostat":15.40-16.48,
     "I use energy star appliances":15.67-16.48,
     "I use energy efficient lightbulbs":15.88-16.48,
-    "I line dry my laundry":16.38-16.48
+    "I line dry my laundry":16.38-16.48,
+    "Yes":15.67-15.74
     
   }
   const AverageTravelMap={
@@ -83,6 +84,43 @@ function CarbonFootprintCalculator({
     "20 to 29.9 Miles":15.87-15.67,
     "30+ Miles":15.95-15.67
   }
+  const AverageTravelForMetroMap={
+    "Under 5 Miles":15.69-15.67,
+    "Under 5 to 9.9 Miles":15.71-15.67,
+    "10 to 14.9 Miles":15.73-15.67,
+    "15 to 19.9 Miles":15.76-15.67,
+    "20 to 29.9 Miles":15.79-15.67,
+    "30+ Miles":15.84-15.67
+  }
+  const AnnualMileageMap={
+    "Under 1,000 Miles":500,
+    "1,000 Miles to 2,499 Miles":1750,
+    "2,500 Miles to 4,999 Miles":5000,
+    "5,0000 Miles to 9,999 Miles":7500,
+    "10,0000 Miles to 14,999 Miles":1500,
+    "15,0000 Miles to 19,999 Miles":17500,
+    "20,0000 Miles to 29,999 Miles":25000,
+   
+    "30,0000 Miles + Miles":30000,
+
+
+  }
+  const fueleconomyMap={
+    "0 to 14 MPG":7,
+    "15-19 MPG":17,
+    "20-24 MPG (US Average)":22,
+    "25-29 MPG":27,
+    "30-34 MPG":32,
+    "35-39 MPG":37,
+    "40-49 MPG":42,
+    "50-59 MPG":52,
+    "60-79 MPG":62,
+    "80-99 MPG":82
+  }
+  const hotelMap={
+    
+  }
+
   carbonFootprint =
   NumResidents in numResidentsMap
     ? numResidentsMap[NumResidents]
@@ -122,7 +160,7 @@ cleanEnergy in cleanEnergyMap
       }
 
 
-
+console.log(carbonFootprint);
 
 
 
@@ -140,11 +178,24 @@ cleanEnergy in cleanEnergyMap
       if(isChecked1)
       {
         carbonFootprint +=
-        AverageTravel in AverageTravelMap
-            ? AverageTravelMap[AverageTravel]
+        AverageTravelForMetro in AverageTravelForMetroMap
+            ? AverageTravelForMetroMap[AverageTravelForMetro]
             : "0";
 
       }
+      if(isChecked2)
+      {
+             var m= AnnualMileage in AnnualMileageMap
+             ? AnnualMileageMap[AnnualMileage]
+             : "0";
+             var mpg= fueleconomy in fueleconomyMap
+             ? fueleconomyMap[fueleconomy]
+             : "0";
+
+             carbonFootprint += (m/mpg)*0.0089 ;
+      }
+
+
 console.log(typeof(carbonFootprint));
 
 
@@ -175,7 +226,7 @@ console.log(typeof(carbonFootprint));
   return (
     <div>
       <h2>Carbon Footprint Calculator</h2>
-      <p>NumResidents: {NumResidents}</p>
+      {/* <p>NumResidents: {NumResidents}</p>
       <p>LivingType: {LivingType}</p>
       <p>HouseSize: {HouseSize}</p>
       <p>cleanEnergy: {cleanEnergy}</p>
@@ -184,7 +235,7 @@ console.log(typeof(carbonFootprint));
       <p>     LongFlights:{LongFlights}</p>
       <p> shortFlights:{shortFlights}</p>
       <p>mediumFlights:{mediumFlights}</p>
-      <p>hotel: {hotel}</p>
+      <p>hotel: {hotel}</p> */}
       <p>Carbon Footprint: {carbonFootprint} kg CO2e</p>
     </div>
   );

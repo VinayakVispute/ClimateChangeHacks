@@ -42,6 +42,7 @@ export default function EventForm() {
     console.log(`mediumFlights: ${mediumFlights}`);
     console.log(`hotel: ${hotel}`);
     console.log(`selectedOptions: ${selectedOptions}`);
+    
 
 
   };
@@ -53,7 +54,7 @@ export default function EventForm() {
     { value: 'I use energy efficient lightbulbs', label: 'I use energy efficient lightbulbs' },
     { value: 'I line dry my laundry', label: 'I line dry my laundry' }
   ];
-
+const option1="Yes";
   const handleCheckboxChange = (event) => {
     const value = event.target.value;
     if (selectedOptions.includes(value)) {
@@ -207,95 +208,7 @@ export default function EventForm() {
   </div>
   </section>
   <section>
-    <h1>This is Travel section</h1>
-  <div className='main-div'>
-        <label htmlFor="LongFlights">Number of long round-trip flights (2500+ miles) I make in a year</label>
-        <select 
-                className='tap-highlight-transparent text-base antialiased box-border align-baseline font-roboto appearance-none bg-transparent bg-no-repeat bg-center-right border border-solid border-gray-700 shadow-none py-2 px-4 rounded-none w-full'
-
-          id="LongFlights"
-          value={LongFlights}
-          onChange={(event) => setLongFlights(event.target.value)}
-        >
-                     <option value="">Select your option</option>
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-           <option value="5-9">5 to 9</option>
-           <option value="9-14">9-14</option>
-
-       
-        </select>
-      </div>
-      <div className='main-div'>
-        <label htmlFor="mediumFlights">Number of medium round-trip flights (300-2500 miles one way) I make in a year</label>
-        <select 
-                className='tap-highlight-transparent text-base antialiased box-border align-baseline font-roboto appearance-none bg-transparent bg-no-repeat bg-center-right border border-solid border-gray-700 shadow-none py-2 px-4 rounded-none w-full'
-
-          id="mediumFlights"
-          value={mediumFlights}
-          onChange={(event) => setmediumFlights(event.target.value)}
-        >
-          <option value="">Select your option</option>
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-           <option value="5-9">5 to 9</option>
-           <option value="9-14">9-14</option>
-
-        </select>
-      </div>
-      <div className='main-div'>
-        <label htmlFor="shortFlights">Number of short round-trip flights less than 300 miles one way I make in a year
-</label>
-        <select 
-                className='tap-highlight-transparent text-base antialiased box-border align-baseline font-roboto appearance-none bg-transparent bg-no-repeat bg-center-right border border-solid border-gray-700 shadow-none py-2 px-4 rounded-none w-full'
-
-          id="shortFlights"
-          value={shortFlights}
-          onChange={(event) => setshortFlights(event.target.value)}
-        >
-                     <option value="">Select your option</option>
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-           <option value="5-9">5 to 9</option>
-           <option value="9-14">9-14</option>
-
-       
-        </select>
-      </div>
-      <div className='main-div'>
-        <label htmlFor="hotel">Average number of nights spent in a hotel per year
-</label>
-        <select 
-                className='tap-highlight-transparent text-base antialiased box-border align-baseline font-roboto appearance-none bg-transparent bg-no-repeat bg-center-right border border-solid border-gray-700 shadow-none py-2 px-4 rounded-none w-full'
-
-          id="hotel"
-          value={hotel}
-          onChange={(event) => sethotel(event.target.value)}
-        >
-                     <option value="">Select your option</option>
-          <option value="0">0</option>
-          <option value="1 to 2 nights">1 to 2 nights</option>
-          <option value="3-4 nights">3 to 4 nights</option>
-          <option value="5-6 nights">5 to 6 nights</option>
-          <option value="1-2 weeks">1-2 weeks</option>
-           <option value="3-4">3-4 weeks</option>
-           <option value="1-2">1-2 months</option>
-    
-
-       
-        </select>
-      </div>
-      </section>
-<section>
+  <section>
           <h1>This is Transport section</h1>
           <div>
             <label>Select all of the ways you travel : </label>
@@ -392,11 +305,11 @@ export default function EventForm() {
                 <label>
                   <input
                     type="checkbox"
-                    value="Yes,My Car is Electric"
-                    checked={selectedOptions.includes("option1")}
+                    value="Yes"
+                    checked={selectedOptions.includes(option1)}
                     onChange={handleCheckboxChange}
                   />
-                  Yes,My Car is Electric
+                  Yes
                 </label>
                 <div className="main-div">
                   <label htmlFor="AnnualMileage">My annual mileage is...</label>
@@ -422,14 +335,14 @@ export default function EventForm() {
                   </select>
                 </div>
                 <div className="main-div">
-                  <label htmlFor="fueleconomy">My vehicle’s combined fuel economy is...</label>
-                  <select
+                <label >My vehicle’s combined fuel economy is...</label>
+*                  <select
                     className="tap-highlight-transparent text-base antialiased box-border align-baseline font-roboto appearance-none bg-transparent bg-no-repeat bg-center-right border border-solid border-gray-700 shadow-none py-2 px-4 rounded-none w-full"
                     id="fueleconomy"
                     value={fueleconomy}
                     onChange={(event) => setfueleconomy(event.target.value)}
                   >
-                    <option value="">Select your option</option>
+                    <option value="Select your option">Select your option</option>
                     <option value="0 to 14 MPG">0 to 14 MPG</option>
                     <option value="15-19 MPG">15-19 MPG</option>
                     <option value="20-24 MPG (US Average)">20-24 MPG (US Average)</option>
@@ -447,6 +360,95 @@ export default function EventForm() {
             
           </div>
         </section>
+    <h1>This is Travel section</h1>
+  <div className='main-div'>
+        <label htmlFor="LongFlights">Number of long round-trip flights (2500+ miles) I make in a year</label>
+        <select 
+                className='tap-highlight-transparent text-base antialiased box-border align-baseline font-roboto appearance-none bg-transparent bg-no-repeat bg-center-right border border-solid border-gray-700 shadow-none py-2 px-4 rounded-none w-full'
+
+          id="LongFlights"
+          value={LongFlights}
+          onChange={(event) => setLongFlights(event.target.value)}
+        >
+                     <option value="">Select your option</option>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+           <option value="5-9">5 to 9</option>
+           <option value="9-14">9-14</option>
+
+       
+        </select>
+      </div>
+      <div className='main-div'>
+        <label htmlFor="mediumFlights">Number of medium round-trip flights (300-2500 miles one way) I make in a year</label>
+        <select 
+                className='tap-highlight-transparent text-base antialiased box-border align-baseline font-roboto appearance-none bg-transparent bg-no-repeat bg-center-right border border-solid border-gray-700 shadow-none py-2 px-4 rounded-none w-full'
+
+          id="mediumFlights"
+          value={mediumFlights}
+          onChange={(event) => setmediumFlights(event.target.value)}
+        >
+          <option value="">Select your option</option>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+           <option value="5-9">5 to 9</option>
+           <option value="9-14">9-14</option>
+
+        </select>
+      </div>
+      <div className='main-div'>
+        <label htmlFor="shortFlights">Number of short round-trip flights less than 300 miles one way I make in a year
+</label>
+        <select 
+                className='tap-highlight-transparent text-base antialiased box-border align-baseline font-roboto appearance-none bg-transparent bg-no-repeat bg-center-right border border-solid border-gray-700 shadow-none py-2 px-4 rounded-none w-full'
+
+          id="shortFlights"
+          value={shortFlights}
+          onChange={(event) => setshortFlights(event.target.value)}
+        >
+                     <option value="">Select your option</option>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+           <option value="5-9">5 to 9</option>
+           <option value="9-14">9-14</option>
+
+       
+        </select>
+      </div>
+      <div className='main-div'>
+        <label htmlFor="hotel">Average number of nights spent in a hotel per year
+</label>
+        <select 
+                className='tap-highlight-transparent text-base antialiased box-border align-baseline font-roboto appearance-none bg-transparent bg-no-repeat bg-center-right border border-solid border-gray-700 shadow-none py-2 px-4 rounded-none w-full'
+
+          id="hotel"
+          value={hotel}
+          onChange={(event) => sethotel(event.target.value)}
+        >
+                     <option value="">Select your option</option>
+          <option value="0">0</option>
+          <option value="1 to 2 nights">1 to 2 nights</option>
+          <option value="3-4 nights">3 to 4 nights</option>
+          <option value="5-6 nights">5 to 6 nights</option>
+          <option value="1-2 weeks">1-2 weeks</option>
+           <option value="3-4">3-4 weeks</option>
+           <option value="1-2">1-2 months</option>
+    
+
+       
+        </select>
+      </div>
+      </section>
+
 
   <button type="submit" class="cursor-pointer font-roboto font-helvetica-neue font-sans  text-base bg-green-600 border-0 box-border text-white font-semibold block mx-auto my-10 py-5 px-10 text-center w-full">Submit</button>
 </form>
