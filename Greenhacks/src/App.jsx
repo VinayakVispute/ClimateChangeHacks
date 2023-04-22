@@ -7,6 +7,8 @@ import { Route, Routes } from 'react-router-dom';
 import Homepage from './Componets/Pages/Homepage'
 import Result from './Componets/Pages/Result' 
 import Card from './Componets/Card'
+import Description from './Componets/Description';
+import Cart from './Componets/Cart';
 export default function App() {
 
   return (
@@ -19,6 +21,8 @@ export default function App() {
  <Route path="/EventForm" element={   <EventForm />   } />
   <Route path="/Result" element={   <Result />   } />
 <Route path="/Card" element={   <Card />   } />
+<Route path="/Description" element={   <Description />   } />
+<Route path="/cart" element={   <Cart />   } />
 
  
 
