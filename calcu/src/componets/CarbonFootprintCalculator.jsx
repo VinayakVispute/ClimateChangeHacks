@@ -11,7 +11,16 @@ function CarbonFootprintCalculator({
   shortFlights,
   mediumFlights,
   hotel,
-  selectedOptions
+  selectedOptions,
+  AverageTravel,
+     AverageTravelForMetro,
+     AnnualMileage,
+     fueleconomy,
+     isChecked,
+     isChecked1,
+     isChecked2,
+     isChecked3,
+     
   
 
 }) {
@@ -61,10 +70,18 @@ function CarbonFootprintCalculator({
   const selectedOptionsMap={
 
     "I have programmable thermostat":15.40-16.48,
-    "I use energy star appliances":15.67-16.48+0.09,
+    "I use energy star appliances":15.67-16.48,
     "I use energy efficient lightbulbs":15.88-16.48,
     "I line dry my laundry":16.38-16.48
     
+  }
+  const AverageTravelMap={
+    "Under 5 Miles":15.69-15.67,
+    "Under 5 to 9.9 Miles":15.73-15.67,
+    "10 to 14.9 Miles":15.77-15.67,
+    "15 to 19.9 Miles":15.81-15.67,
+    "20 to 29.9 Miles":15.87-15.67,
+    "30+ Miles":15.95-15.67
   }
   carbonFootprint =
   NumResidents in numResidentsMap
@@ -105,6 +122,29 @@ cleanEnergy in cleanEnergyMap
       }
 
 
+
+
+
+
+
+
+
+      if(isChecked)
+      {
+        carbonFootprint +=
+        AverageTravel in AverageTravelMap
+            ? AverageTravelMap[AverageTravel]
+            : "0";
+
+      }
+      if(isChecked1)
+      {
+        carbonFootprint +=
+        AverageTravel in AverageTravelMap
+            ? AverageTravelMap[AverageTravel]
+            : "0";
+
+      }
 console.log(typeof(carbonFootprint));
 
 

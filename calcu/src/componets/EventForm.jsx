@@ -462,6 +462,15 @@ export default function EventForm() {
      mediumFlights={mediumFlights}
      hotel={hotel}
      selectedOptions={selectedOptions}
+     AverageTravel={AverageTravel}
+     AverageTravelForMetro={AverageTravelForMetro}
+     AnnualMileage={AnnualMileage}
+     fueleconomy={fueleconomy}
+     isChecked={isChecked}
+     isChecked1={isChecked1}
+     isChecked2={isChecked2}
+     isChecked3={isChecked3}
+     
     
    
    />
@@ -472,3 +481,11 @@ export default function EventForm() {
 
 
 
+    // const [AverageTravel, setAverageTravel] = useState("");
+    // const [AverageTravelForMetro, setAverageTravelForMetro] = useState("");
+    // const [isChecked, setIsChecked] = useState(false);
+    // const [isChecked1, setIsChecked1] = useState(false);
+    // const [isChecked2, setIsChecked2] = useState(false);
+    // const [isChecked3, setIsChecked3] = useState(false);
+    // const [AnnualMileage, setAnnualMileage] = useState("");
+    // const [fueleconomy, setfueleconomy] = useState("");
