@@ -297,11 +297,7 @@ carbonFootprint={carbonFootprint}  / >
 trees={trees}
 carbonFootprint={carbonFootprint}/>
 
-<Payment / >
- <Normalinfo / >
-<Treecount / > 
-<Cardinfo / > 
-<Mail />
+
 
 </div>
 

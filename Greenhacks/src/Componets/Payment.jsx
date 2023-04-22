@@ -76,9 +76,9 @@ function Payment({
                 onChange={handleSliderChange}
               />
             </div>
-            <button className="bg-indigo-600 text-white rounded-full px-16 py-4 mt-8" id="submit">
+            <a href='/Card' className="bg-indigo-600 text-white rounded-full px-16 py-4 mt-8" id="submit">
               Offset Footprint
-            </button>
+            </a>
           </div>
         </div>
       </div>
