@@ -17,6 +17,16 @@ export default function EventForm() {
   // const [numHotelRooms, setNumHotelRooms] = useState('');
   // const [numMealsPerDay, setNumMealsPerDay] = useState('');
   // const [mealType, setMealType] = useState('');
+  
+  //VInayak VIspute is Genius and Real OG
+  const [AverageTravel, setAverageTravel] = useState("");
+  const [AverageTravelForMetro, setAverageTravelForMetro] = useState("");
+  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked1, setIsChecked1] = useState(false);
+  const [isChecked2, setIsChecked2] = useState(false);
+  const [isChecked3, setIsChecked3] = useState(false);
+  const [AnnualMileage, setAnnualMileage] = useState("");
+  const [fueleconomy, setfueleconomy] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -52,7 +62,18 @@ export default function EventForm() {
       setSelectedOptions([...selectedOptions, value]);
     }
   };
-
+ const handleOptionChange = (event) => {
+    setIsChecked(event.target.checked);
+  };
+  const handleOptionChange1 = (event1) => {
+    setIsChecked1(event1.target.checked);
+  };
+  const handleOptionChange2 = (event2) => {
+    setIsChecked2(event2.target.checked);
+  };
+  const handleOptionChange3 = (event3) => {
+    setIsChecked3(event3.target.checked);
+  };
   return (   
 
     <div  className="w-full tap-highlight-transparent text-base antialiased text-opacity-87 box-border block padding-4">
@@ -274,6 +295,158 @@ export default function EventForm() {
         </select>
       </div>
       </section>
+<section>
+          <h1>This is Transport section</h1>
+          <div>
+            <label>Select all of the ways you travel : </label>
+
+            <label>
+              <input
+                type="checkbox"
+                checked={isChecked}
+                onChange={handleOptionChange}
+              />
+              Intercity/Commuter Rail
+            </label>
+
+            <label>
+              <input
+                type="checkbox"
+                checked={isChecked1}
+                onChange={handleOptionChange1}
+              />
+              Bus/Subway/Metro
+            </label>
+
+            <label>
+              <input
+                type="checkbox"
+                checked={isChecked2}
+                onChange={handleOptionChange2}
+              />
+              Car
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                checked={isChecked3}
+                onChange={handleOptionChange3}
+              />
+              Bike/Walk
+            </label>
+
+            {isChecked && (
+              <div className="main-div">
+                <label htmlFor="AverageTravel">Average total weekly travel via intercity or commuter rail...</label>
+                <select
+                  className="tap-highlight-transparent text-base antialiased box-border align-baseline font-roboto appearance-none bg-transparent bg-no-repeat bg-center-right border border-solid border-gray-700 shadow-none py-2 px-4 rounded-none w-full"
+                  id="AverageTravel"
+                  value={AverageTravel}
+                  onChange={(event) => setAverageTravel(event.target.value)}
+                >
+                  <option value="">Select your option</option>
+                  <option value="0 Miles (Usa Average)">
+                    0 Miles (Usa Average)
+                  </option>
+                  <option value="Under 5 Miles">Under 5 Miles</option>
+                  <option value="Under 5 to 9.9 Miles">
+                    Under 5 to 9.9 Miles
+                  </option>
+                  <option value="10 to 14.9 Miles">10 to 14.9 Miles</option>
+                  <option value="15 to 19.9 Miles">15 to 19.9 Miles</option>
+                  <option value="20 to 29.9 Miles">20 to 29.9 Miles</option>
+                  <option value="30+ Miles">30+ Miles</option>
+                </select>
+              </div>
+            )}
+            {isChecked1 && (
+              <div className="main-div">
+                <label htmlFor="AverageTravelForMetro">Average total weekly travel via bus, subway, or metro...</label>
+                <select
+                  className="tap-highlight-transparent text-base antialiased box-border align-baseline font-roboto appearance-none bg-transparent bg-no-repeat bg-center-right border border-solid border-gray-700 shadow-none py-2 px-4 rounded-none w-full"
+                  id="AverageTravelForMetro"
+                  value={AverageTravelForMetro}
+                  onChange={(event) => setAverageTravelForMetro(event.target.value)}
+                >
+                  <option value="">Select your option</option>
+                  <option value="0 Miles (Usa Average)">
+                    0 Miles (Usa Average)
+                  </option>
+                  <option value="Under 5 Miles">Under 5 Miles</option>
+                  <option value="Under 5 to 9.9 Miles">
+                    Under 5 to 9.9 Miles
+                  </option>
+                  <option value="10 to 14.9 Miles">10 to 14.9 Miles</option>
+                  <option value="15 to 19.9 Miles">15 to 19.9 Miles</option>
+                  <option value="20 to 29.9 Miles">20 to 29.9 Miles</option>
+                  <option value="30+ Miles">30+ Miles</option>
+                </select>
+              </div>
+            )}
+            {isChecked2 && (  
+              <div>
+                <br />
+                <br />
+                <br />
+                <label>My car is an electric vehicle</label>
+                <label>
+                  <input
+                    type="checkbox"
+                    value="Yes,My Car is Electric"
+                    checked={selectedOptions.includes("option1")}
+                    onChange={handleCheckboxChange}
+                  />
+                  Yes,My Car is Electric
+                </label>
+                <div className="main-div">
+                  <label htmlFor="AnnualMileage">My annual mileage is...</label>
+                  <select
+                    className="tap-highlight-transparent text-base antialiased box-border align-baseline font-roboto appearance-none bg-transparent bg-no-repeat bg-center-right border border-solid border-gray-700 shadow-none py-2 px-4 rounded-none w-full"
+                    id="AnnualMileage"
+                    value={AnnualMileage}
+                    onChange={(event) => setAnnualMileage(event.target.value)}
+                  >
+                    <option value="">Select your option</option>
+                    <option value="Under 1,000 Miles">
+                      Under 1,000 Miles
+                    </option>
+                    <option value=" 1,000 to 2,499 Miles">
+                      1,000 to 2,499 Miles
+                    </option>
+                    <option value="2,500 to 4,999 Miles">2,500 to 4,999 Miles</option>
+                    <option value="5,000 to 9,999 Miles">5,000 to 9,999 Miles</option>
+                    <option value="10,000 to 14,999 Miles(USA Average)">10,000 to 14,999 Miles(USA Average)</option>
+                    <option value="15,000 to 19,999 Miles">15,000 to 19,999 Miles</option>
+                    <option value="20,000 to 29,999 Miles">20,000 to 29,999 Miles</option>
+                    <option value="30,000 + Miles">30,000 + Miles</option>
+                  </select>
+                </div>
+                <div className="main-div">
+                  <label htmlFor="fueleconomy">My vehicle’s combined fuel economy is...</label>
+                  <select
+                    className="tap-highlight-transparent text-base antialiased box-border align-baseline font-roboto appearance-none bg-transparent bg-no-repeat bg-center-right border border-solid border-gray-700 shadow-none py-2 px-4 rounded-none w-full"
+                    id="fueleconomy"
+                    value={fueleconomy}
+                    onChange={(event) => setfueleconomy(event.target.value)}
+                  >
+                    <option value="">Select your option</option>
+                    <option value="0 to 14 MPG">0 to 14 MPG</option>
+                    <option value="15-19 MPG">15-19 MPG</option>
+                    <option value="20-24 MPG (US Average)">20-24 MPG (US Average)</option>
+                    <option value="25-29 MPG">25-29 MPG </option>
+                    <option value="30-34 MPG">30-34 MPG </option>
+                    <option value="35-39 MPG">35-39 MPG  </option>
+                    <option value="40-49 MPG">40-49 MPG  </option>
+                    <option value="50-59 MPG">50-59 MPG  </option>
+                    <option value="60-79 MPG">60-79 MPG  </option>
+                    <option value="80-99 MPG">80-99 MPG   </option>
+                  </select>
+                </div>
+              </div>
+            )}
+            
+          </div>
+        </section>
 
   <button type="submit" class="cursor-pointer font-roboto font-helvetica-neue font-sans  text-base bg-green-600 border-0 box-border text-white font-semibold block mx-auto my-10 py-5 px-10 text-center w-full">Submit</button>
 </form>
