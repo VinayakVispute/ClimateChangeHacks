@@ -11,6 +11,7 @@ function CarbonFootprintCalculator({
   shortFlights,
   mediumFlights,
   hotel,
+  selectedOptions
   
 
 }) {
@@ -45,31 +46,62 @@ function CarbonFootprintCalculator({
     "Yes,all":-19.02+14.76,
     "No":0
   }
+  const RecycleMap={
+    "Yes":-17.62+17.48,
+    "No":0
+  }
+  const DietTypeMap={
+   "Vegetarian":16.82-17.62,
+   "Non-Vegetarian":18.42-17.62,
+   "No beef":17.02-17.62,
+   "Vegan":16.62-17.62
    
+  }
+   
+  const selectedOptionsMap={
+
+    "I have programmable thermostat":15.40-16.48,
+    "I use energy star appliances":15.67-16.48,
+    "I use energy efficient lightbulbs":15.88-16.48,
+    "I line dry my laundry":16.38-16.48
+    
+  }
   carbonFootprint =
   NumResidents in numResidentsMap
     ? numResidentsMap[NumResidents]
-    : "Not avialable";
+    : "0";
     carbonFootprint +=
     LivingType in LivingTypeMap
     ? LivingTypeMap[LivingType]
-    : "Not avialable";
+    : "0";
     
     carbonFootprint +=
     HouseSize in HouseSizeMap
     ? HouseSizeMap[HouseSize]
-    : "Not avialable";
+    : "0";
 
     carbonFootprint +=
 cleanEnergy in cleanEnergyMap
     ? cleanEnergyMap[cleanEnergy]
-    : "Not avialable";
+    : "0";
+
+    carbonFootprint +=
+    Recycle in RecycleMap
+        ? RecycleMap[Recycle]
+        : 0;
+
+        carbonFootprint +=
+    DietType in DietTypeMap
+        ? DietTypeMap[DietType]
+        : 0;
+    
+
+    console.log(selectedOptions);
 
 
 
 
-
-
+console.log(carbonFootprint);
 
 
 

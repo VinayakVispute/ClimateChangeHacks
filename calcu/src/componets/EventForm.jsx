@@ -288,6 +288,7 @@ export default function EventForm() {
      shortFlights={shortFlights}
      mediumFlights={mediumFlights}
      hotel={hotel}
+     selectedOptions={selectedOptions}
     
    
    />
