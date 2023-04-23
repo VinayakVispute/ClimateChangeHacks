@@ -3,7 +3,13 @@ import React from 'react';
 import { useState } from 'react';
 import Cart from './Cart';
 
-export default function Description() {
+export default function Description(
+  {
+    Descriptions,
+    url
+
+  }
+) {
   const [numTrees, setNumTrees] = useState("");
   const [treeName, setTreeName] = useState("");
   const [occasion, setOccasion] = useState("");
@@ -26,7 +32,7 @@ export default function Description() {
     ):( <div  class="max-w-md w-full bg-white shadow-lg rounded-lg overflow-hidden mt-4">
     <div class="relative">
         <img
-          src="https://s3-ap-south-1.amazonaws.com/sankalptaru-web/wp-content/uploads/2023/03/24105714/ETMy-1649053863-600x600.jpg"
+          src={url}
           alt="Project Harit Himachal"
           class="w-full h-48 object-cover object-center"
         />
@@ -36,8 +42,8 @@ export default function Description() {
         My Environment and Earth
         </h2>
         <p class="text-gray-700 text-base">
-        The world could run out of forests in 2100, food in 2050, and water in 2040.
-On the 53rd anniversary of Earth Day & 51st anniversary of World Environment Day, let us sustainably invest in our planet, and also in the lives of our farmers who help us with food security and sustenance on the planet by growing trees!
+          
+{Descriptions}
         </p>
         <br></br>
      
