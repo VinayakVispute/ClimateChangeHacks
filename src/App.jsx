@@ -21,7 +21,7 @@ export default function App() {
   <Navbar /  >
 
    <Routes> 
- <Route path="/" element={   <Homepage />   } />
+ <Route path="/Home" element={   <Homepage />   } />
  <Route path="/EventForm" element={   <EventForm />   } />
   <Route path="/Result" element={   <Result />   } />
 <Route path="/Card" element={   <Card />   } />

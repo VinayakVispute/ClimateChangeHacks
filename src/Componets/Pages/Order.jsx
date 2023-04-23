@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Cert from'../Cert';
- export default function Order({ trackingId, onDownloadCertificate }) {
+ export default function Order({ trackingId,treeName }) {
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
   const [download,setdownload]=useState(false);
 
@@ -18,7 +18,7 @@ import Cert from'../Cert';
     
     <div>
       {download ? (
-        <Cert/>
+        <Cert treeName={treeName}/>
       ) : (
         <div className="flex flex-col w-screen h-screen  items-center justify-center h-full">
         {!isAnimationFinished && (

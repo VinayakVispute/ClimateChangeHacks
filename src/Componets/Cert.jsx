@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 
-export default function Certificate() {
+export default function Certificate({treeName}) {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function Certificate() {
       // Draw text onto canvas
       ctx.fillStyle = 'black';
       ctx.font = ' 15px Arial';
-      ctx.fillText('Jayesh Yadav', imgX + imgWidth / 2 - 70, imgY + imgHeight - 160);
+      ctx.fillText(treeName, imgX + imgWidth / 2 - 70, imgY + imgHeight - 160);
     };
     img.src = 'certificate.png';
   }, []);
