@@ -1,4 +1,5 @@
 import React from "react";
+import Banner from "../Banner";
 import MainSec from "../MainSec";  
 import MainSec2 from "../MainSec2";   
 import MainSec3 from "../MainSec3";   
@@ -14,7 +15,7 @@ export default function Homepage() {
 return (
 <div>
 
-
+<Banner/>
 <MainSec/>
 <MainSec2 / >
 <MainSec3 / >
