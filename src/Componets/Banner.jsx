@@ -6,7 +6,7 @@ function Banner() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=First slide&bg=373940"
+          src="luckybamboo.webp"
           alt="First slide"
         />
         <Carousel.Caption>
@@ -17,7 +17,7 @@ function Banner() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=Second slide&bg=282c34"
+          src="luckybamboo.webp"
           alt="Second slide"
         />
 
@@ -29,7 +29,7 @@ function Banner() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=Third slide&bg=20232a"
+          src="luckybamboo.webp"
           alt="Third slide"
         />
 
