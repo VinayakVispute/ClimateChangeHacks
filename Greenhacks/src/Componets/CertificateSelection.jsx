@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 
-function CertificateSelector() {
+function CertificateSelector({
+  Price
+}) {
   const [selectedImage, setSelectedImage] = useState('');
   const [promoCode, setPromoCode] = useState('');
   const [discount, setDiscount] = useState(0);
+  const[price,setprice]=useState(0);
 
   function handleImageChange(event) {
     setSelectedImage(event.target.value);
@@ -11,11 +14,17 @@ function CertificateSelector() {
 
   function handlePromoCodeChange(event) {
     setPromoCode(event.target.value);
+   
+ 
   }
 
   function applyPromoCode() {
-    if (promoCode === 'DISCOUNT10') {
-      setDiscount(10);
+    if (promoCode === 'Free100') {
+    
+     Price=price;
+     console.log(Price);
+     
+      
     }
   }
 

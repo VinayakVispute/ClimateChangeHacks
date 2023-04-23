@@ -10,13 +10,60 @@ export default function Cart(
     }
 ) {
    
+ 
+  const [selectedImage, setSelectedImage] = useState('');
+  const [promoCode, setPromoCode] = useState('');
+  const [discount, setDiscount] = useState(0);
+  const[price,setprice]=useState(0);
+  const[zeroprice,setzeroprice]=useState(false);
+
+
+  function handleImageChange(event) {
+    setSelectedImage(event.target.value);
+  }
+
+  function handlePromoCodeChange(event) {
+    setPromoCode(event.target.value);
+   
+ 
+  }
+
+  function applyPromoCode() {
+    if (promoCode === 'Free100') {
+    
+     setzeroprice(true);
+     
+      
+    }
+  }
+
+  function showPreview() {
+    const preview = document.getElementById("preview");
+    if (selectedImage) {
+      preview.textContent = `Preview selected image: ${selectedImage}`;
+    } else {
+      preview.textContent = "";
+    }
+  }
+
+  function resetBorders() {
+    const images = document.querySelectorAll('input[name="image"]');
+    for (let i = 0; i < images.length; i++) {
+      images[i].parentNode.style.border = "none";
+    }
+    const selectedImageElement = document.querySelector(`input[name="image"][value="${selectedImage}"] + img`);
+    if (selectedImageElement) {
+      selectedImageElement.parentNode.style.border = "3px solid green";
+    }
+  }
+
     const[trees,settrees]=useState(numTrees);
     const [treePrice, setTreePrice] = useState(20);
     const [editingDetails, setEditingDetails] = useState(false);
     const [certificate, setCertificate] = useState("");
     const [certificateType, setCertificateType] = useState("");
     const [Checkout, setCheckout] = useState("");
-  
+    let Price=trees*treePrice;
     const handleNumTreesChange = (event) => {
 settrees(event.target.value);
 
@@ -49,6 +96,8 @@ settrees(event.target.value);
         // Save details code goes here
       };
       console.log(trees);
+      
+      console.log("Price:"+Price);
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="max-w-3xl mx-auto">
@@ -89,7 +138,8 @@ settrees(event.target.value);
               {trees} {trees === 1 ? "Tree" : "Trees"} x ${treePrice} each
             </p>
             <p className="text-gray-700">
-              Total: ${trees * treePrice}
+             Total:$ {zeroprice ?0:  Price}
+              
             </p>
           </div>
           {/* < div className="mb-4">
@@ -133,7 +183,41 @@ settrees(event.target.value);
         />
       </svg>
     </div> */}
-    <CertificateSelector/>
+    <div className="flex flex-col items-center justify-center py-10">
+      <h1 className="text-3xl font-bold mb-5">Select an image:</h1>
+      <div className="grid grid-cols-3 gap-4">
+        <label className="flex flex-col items-center">
+          <input
+            type="radio"
+            name="image"
+            className="hidden"
+            value="https://sankalptaru-app.s3.ap-south-1.amazonaws.com/images/certificates/tfg5-1677477024.jpg"
+            onChange={(event) => { handleImageChange(event); showPreview(); resetBorders(); }}
+          />
+          <img
+            src="https://sankalptaru-app.s3.ap-south-1.amazonaws.com/images/certificates/tfg5-1677477024.jpg"
+            alt="Certificate"
+            className="w-full h-auto cursor-pointer"
+            onClick={resetBorders}
+          />
+        </label>
+      </div>
+      <h4 id="preview" className="text-green-500 mt-5"></h4>
+      <div className="mt-5">
+        <label htmlFor="promoCode" className="font-bold">Promo code:</label>
+        <input
+          type="text"
+          id="promoCode"
+          className="mx-3 p-2 border border-gray-400"
+          value={promoCode}
+          onChange={handlePromoCodeChange}
+        />
+        <button className="bg-green-500 text-white px-3 py-2 rounded" onClick={applyPromoCode}>Apply</button>
+      </div>
+      {discount > 0 &&
+        <p className="text-green-500 font-bold mt-3">Discount applied: {discount}%</p>
+      }
+    </div>
   
     <div className="flex justify-end">
         <br></br>
