@@ -15,7 +15,7 @@ export default function Homepage() {
 return (
 <div>
 
-<Banner/>
+
 <MainSec/>
 <MainSec2 / >
 <MainSec3 / >
