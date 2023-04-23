@@ -75,7 +75,7 @@ export default function Description(
     </div>
     <div className="mb-4">
       <label htmlFor="treeName" className="block text-gray-700 font-bold mb-2">
-        Name on Your Tree
+        Your Name on certificate
       </label>
       <input
         type="text"
@@ -89,7 +89,7 @@ export default function Description(
     </div>
     <div className="mb-4">
       <label htmlFor="occasion" className="block text-gray-700 font-bold mb-2">
-        Occasion
+        Event(cause)
       </label>
       <input
         type="text"
