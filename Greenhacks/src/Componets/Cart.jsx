@@ -111,6 +111,7 @@ settrees(event.target.value);
         treeName=name;
         setsave(true);
       };
+      const trackingId=Date.now()+Math.floor(Math.random()*100);
   return (
 <>
     {Checkout ?(<Order trackingId={trackingId}/>):(
