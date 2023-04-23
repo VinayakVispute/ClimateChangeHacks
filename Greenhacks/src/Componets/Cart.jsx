@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import CertificateSelector from './CertificateSelection';
 
 export default function Cart(
     {
@@ -91,7 +92,7 @@ settrees(event.target.value);
               Total: ${trees * treePrice}
             </p>
           </div>
-          < div className="mb-4">
+          {/* < div className="mb-4">
             <label
               htmlFor="certificate"
               className="block font-medium text-gray-700 mb-2"
@@ -131,7 +132,8 @@ settrees(event.target.value);
           clipRule="evenodd"
         />
       </svg>
-    </div>
+    </div> */}
+    <CertificateSelector/>
   
     <div className="flex justify-end">
         <br></br>
@@ -148,7 +150,7 @@ settrees(event.target.value);
 </div>
 </div>
 </div>
-</div>
+// </div>
 
   )
 }
