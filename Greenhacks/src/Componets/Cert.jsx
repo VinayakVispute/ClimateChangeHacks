@@ -30,9 +30,9 @@ export default function Certificate() {
       ctx.drawImage(img, imgX, imgY, imgWidth, imgHeight);
 
       // Draw text onto canvas
-      ctx.fillStyle = 'blue';
-      ctx.font = 'bold 29px Arial';
-      ctx.fillText('Jayesh Yadav', imgX + imgWidth / 2 - 100, imgY + imgHeight - 160);
+      ctx.fillStyle = 'black';
+      ctx.font = ' 15px Arial';
+      ctx.fillText('Jayesh Yadav', imgX + imgWidth / 2 - 70, imgY + imgHeight - 160);
     };
     img.src = 'certificate.png';
   }, []);
