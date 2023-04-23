@@ -91,11 +91,11 @@ const Card = () => {
           </p>
           <div class="flex justify-between items-center mt-4">
             <p class="text-gray-600 text-sm">Contribution ₹175.00</p>
-            <button
+            <a href='/Description'
               class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full"
             >
               Plant Now
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -122,11 +122,11 @@ const Card = () => {
           </p>
           <div class="flex justify-between items-center mt-4">
             <p class="text-gray-600 text-sm">Contribution ₹175.00</p>
-            <button
+            <a href='/Description'
               class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full"
             >
               Plant Now
-            </button>
+            </a>
           </div>
         </div>
       </div>
