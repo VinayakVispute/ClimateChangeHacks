@@ -9,7 +9,7 @@ import Result from './Componets/Pages/Result'
 import Card from './Componets/Card'
 import Description from './Componets/Description';
 import Cart from './Componets/Cart';
-
+import Footer from './Componets/Footer';
  
 export default function App() {
 
@@ -34,7 +34,7 @@ export default function App() {
  
   </Routes>
   
- 
+ <Footer /  >
                
         </div>
   )
