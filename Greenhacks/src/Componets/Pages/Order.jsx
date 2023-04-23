@@ -18,7 +18,7 @@ import { motion } from "framer-motion";
         <motion.div
           className="flex flex-col items-center justify-center"
           animate={{ y: [-10, 0, -10] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
+          transition={{ duration: 1, repeat: 2 }}
           onAnimationComplete={handleAnimationComplete}
         >
           <img
