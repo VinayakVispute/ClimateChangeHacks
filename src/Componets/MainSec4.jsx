@@ -5,7 +5,7 @@ export default function MainSec4() {
 return ( 
 
    <section className="font-inter text-73564C">
-      <div className="container">
+      <div className="container  max-w-[1340px] ">
         <div className="text-center">
           <h2 className="font-playfair-bold text-lg xl:text-3xl text-25 mb-5">
             Climate Crisis is Real
@@ -13,7 +13,7 @@ return (
           <p>Did you know, climate change could be irreversible by 2030?</p>
         </div>
         <div
-          className="flex flex-wrap mt-[calc(var(--bs-gutter-y)*-1)] -mx-[calc(var(--bs-gutter-x)*0.5)]"
+          className="flex flex-row justify-between mt-[calc(var(--bs-gutter-y)*-1)"
         >
           <div
             className="flex flex-col items-center md:col-span-6 lg:col-span-6 sm:col-span-12 col-span-12"

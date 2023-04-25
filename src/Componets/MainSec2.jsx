@@ -7,7 +7,7 @@ return(
       <div className="container">
         <div className="text-center">
           <h2
-            className="font-bold font-playfair text-lg md:text-3xl mb-5"
+            className="font-bold font-playfair text-lg md:text-3xl mb-5 mt-3"
           >
             We Don't Just Plant!
           </h2>

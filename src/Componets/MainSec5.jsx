@@ -5,7 +5,7 @@ export default function MainSec5() {
 return(    
 
     <section className="font-inter">
-      <div className="container">
+      <div className="container  max-w-[1340px] ">
         <div className="text-center">
           <h2
             className="font-playfair font-bold text-lg md:text-3xl lg:text-5xl mb-5"

@@ -5,7 +5,7 @@ export default function MainSec3() {
 
 return (
    <div className="bg-gray-100 font-inter text-gray-700">
-      <div className="container">
+      <div className="container  max-w-[1340px] ">
         <div className="text-center">
           <h2 className="font-bold font-playfair text-lg md:text-3xl mb-5">
             Sustainable Plantations at Your Door!
