@@ -14,10 +14,6 @@ export default function EventForm() {
   const [mediumFlights, setmediumFlights] = useState("");
   const [shortFlights, setshortFlights] = useState("");
   const [hotel, sethotel] = useState("");
-  // const [carDistance, setCarDistance] = useState('');
-  // const [numHotelRooms, setNumHotelRooms] = useState('');
-  // const [numMealsPerDay, setNumMealsPerDay] = useState('');
-  // const [mealType, setMealType] = useState('');
 
   //VInayak VIspute is Genius and Real OG
   const [AverageTravel, setAverageTravel] = useState("");
@@ -86,7 +82,7 @@ export default function EventForm() {
     setIsChecked3(event3.target.checked);
   };
   return (
-    <div className="w-full tap-highlight-transparent text-base antialiased text-opacity-87">
+    <div className="w-full tap-highlight-transparent text-base antialiased text-opacity-87 bg-white dark:bg-gray-900">
       {issubmit ? (
         <div>
           <Result
@@ -571,12 +567,3 @@ export default function EventForm() {
     </div>
   );
 }
-
-// const [AverageTravel, setAverageTravel] = useState("");
-// const [AverageTravelForMetro, setAverageTravelForMetro] = useState("");
-// const [isChecked, setIsChecked] = useState(false);
-// const [isChecked1, setIsChecked1] = useState(false);
-// const [isChecked2, setIsChecked2] = useState(false);
-// const [isChecked3, setIsChecked3] = useState(false);
-// const [AnnualMileage, setAnnualMileage] = useState("");
-// const [fueleconomy, setfueleconomy] = useState("");

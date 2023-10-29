@@ -7,7 +7,7 @@ import FundsUsage from "../FundsUsage";
 
 export default function Homepage() {
   return (
-    <div>
+    <div className="bg-white">
       <HeroSection />
       <HomeHighlights />
       <TreePlantationOptions />

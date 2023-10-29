@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const darkModeColor = "dark:from-gray-900 dark:via-gray-800 dark:to-gray-700";
 const ErrorPage = () => {
+  const { loginWithRedirect } = useAuth0();
+
   return (
     <div className="">
       <div
@@ -18,13 +21,12 @@ const ErrorPage = () => {
                 404
               </h1>
               <h1 className="text-6xl font-medium py-8 dark:text-white">
-                Oops! Page not found
+                Oops! You need to log in to view your account.
               </h1>
               <p className="text-2xl pb-8 px-12 font-medium dark:text-gray-400">
                 {" "}
                 {/* Define text color for dark mode */}
-                Oops! The page you are looking for does not exist. It might have
-                been moved or deleted.
+                Oops! Please Login to Access this Page.
               </p>
               <Link
                 to="/"
@@ -33,10 +35,10 @@ const ErrorPage = () => {
                 HOME
               </Link>
               <Link
-                to="/"
+                onClick={() => loginWithRedirect()}
                 className="bg-gradient-to-r from-red-400 to-red-500 hover:from-red-500 hover:to-red-500 text-white dark:text-gray-800 font-semibold px-6 py-3 rounded-md"
               >
-                Contact Us
+                Login
               </Link>
             </div>
           </div>

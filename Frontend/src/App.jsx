@@ -1,6 +1,5 @@
 import React from "react";
-import "./App.css";
-import { Route, Routes, Outlet } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Navbar from "./Componets/Navbar";
 import EventForm from "./Componets/EventForm";
 import Homepage from "./Componets/Pages/Homepage";
@@ -11,8 +10,18 @@ import Cart from "./Componets/Cart";
 import Footer from "./Componets/Footer";
 import Cert from "./Componets/Cert";
 import ErrorPage from "./Componets/ErrorPage";
+import { useAuth0 } from "@auth0/auth0-react";
+import Spinner from "./Componets/Spinner";
+import Account from "./Componets/Account";
 
 export default function App() {
+  const { isLoading } = useAuth0();
+
+  if (isLoading) {
+    // Show a loading screen while waiting for authentication to complete
+    return <Spinner />;
+  }
+
   return (
     <div>
       <Navbar />
@@ -24,6 +33,7 @@ export default function App() {
         <Route path="/Description" element={<Description />} />
         <Route path="/Cart" element={<Cart />} />
         <Route path="/Certi" element={<Cert />} />
+        <Route path="/Account" element={<Account />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
       <Footer />
