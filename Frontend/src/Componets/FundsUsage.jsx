@@ -15,7 +15,7 @@ export default function FundsUsage() {
               <img
                 src="https://sankalptaru.org/wp-content/themes/sankalptaru/dist/images/Home Page/Beneficiary-utilize-funds.png"
                 alt="Beneficiary Farmers"
-                className="w-1/2 h-auto"
+                className="w-1/2 h-auto mx-auto"
               />
               <p className="font-inter text-black text-base mt-4">
                 Identification of beneficiary farmers
@@ -27,7 +27,7 @@ export default function FundsUsage() {
               <img
                 src="https://sankalptaru.org/wp-content/themes/sankalptaru/dist/images/Home Page/Sapling-utilize-funds.png"
                 alt="Saplings"
-                className="w-1/2 h-auto"
+                className="w-1/2 h-auto mx-auto"
               />
               <p className="font-inter text-black text-base mt-4">
                 Procurement of saplings
@@ -39,7 +39,7 @@ export default function FundsUsage() {
               <img
                 src="https://sankalptaru.org/wp-content/themes/sankalptaru/dist/images/Home Page/Post-plantation-utilize-funds.png"
                 alt="Post-plantation Interventions"
-                className="w-1/2 h-auto"
+                className="w-1/2 h-auto mx-auto"
               />
               <p className="font-inter text-black text-base mt-4">
                 Post-plantation interventions and monitoring
@@ -51,7 +51,7 @@ export default function FundsUsage() {
               <img
                 src="https://sankalptaru.org/wp-content/themes/sankalptaru/dist/images/Home Page/R&D-utilize-funds.png"
                 alt="R&D Activities"
-                className="w-1/2 h-auto"
+                className="w-1/2 h-auto mx-auto"
               />
               <p className="font-inter text-black text-base mt-4">
                 R&D activities
@@ -63,7 +63,7 @@ export default function FundsUsage() {
               <img
                 src="https://sankalptaru.org/wp-content/themes/sankalptaru/dist/images/Home Page/Program-management-utilize-funds.png"
                 alt="Program Management and Administrative Overheads"
-                className="w-1/2 h-auto"
+                className="w-1/2 h-auto mx-auto"
               />
               <p className="font-inter text-black text-base mt-4">
                 Program management and administrative overheads
