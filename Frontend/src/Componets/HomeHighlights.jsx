@@ -1,19 +1,16 @@
 import React from "react";
 
-export default function MainSec2() { 
-return(  
-
-<div className="bg-[#F8F8F8] font-inter text-[#333333]">
-      <div className="container">
+export default function HomeHighlights() {
+  return (
+    <div className="bg-gray-100 text-gray-700 font-inter">
+      <div className="container mx-auto">
         <div className="text-center">
-          <h2
-            className="font-bold font-playfair text-lg md:text-3xl mb-5 mt-3"
-          >
-            We Don't Just Plant!
+          <h2 className="font-bold text-3xl md:text-4xl mb-5 mt-3">
+            Going Beyond Planting Trees
           </h2>
           <p>
-            Go beyond a typical plantation program by creating a wide
-            socio-environmental impact
+            Our commitment extends beyond planting trees; we strive to create a
+            profound socio-environmental impact.
           </p>
         </div>
         <div className="flex flex-wrap justify-center">
@@ -22,13 +19,12 @@ return(
               <img
                 src="https://sankalptaru.org/wp-content/themes/sankalptaru/dist/images/Home Page/lOCATION 1.png"
                 className="w-16 h-16"
-                alt=""
+                alt="Location Icon"
               />
-              <h4 className="font-playfair font-bold text-lg mt-4">
-                Greening PAN India
-              </h4>
+              <h4 className="font-bold text-xl mt-4">Nationwide Greening</h4>
               <p className="text-center">
-                Tree Plantation Projects across 25 States &amp; UTs
+                Our tree plantation projects span across 25 States &amp; Union
+                Territories in India.
               </p>
             </div>
           </div>
@@ -37,14 +33,12 @@ return(
               <img
                 src="https://sankalptaru.org/wp-content/themes/sankalptaru/dist/images/Home Page/Blockchain 1.png"
                 className="w-16 h-16"
-                alt=""
+                alt="Blockchain Icon"
               />
-              <h4 className="font-playfair font-bold text-lg mt-4">
-                Blockchain Technology
-              </h4>
+              <h4 className="font-bold text-xl mt-4">Embracing Blockchain</h4>
               <p className="text-center">
-                First non-profit in environmental domain to adopt Blockchain
-                Technology
+                Pioneering the use of blockchain technology in the non-profit
+                environmental sector.
               </p>
             </div>
           </div>
@@ -53,12 +47,12 @@ return(
               <img
                 src="https://sankalptaru.org/wp-content/themes/sankalptaru/dist/images/Home Page/PSD 1.png"
                 className="w-16 h-16"
-                alt=""
+                alt="Geotagging Icon"
               />
-              <h4 className="font-playfair font-bold text-lg mt-4">Geotagging</h4>
+              <h4 className="font-bold text-xl mt-4">Transparent Geotagging</h4>
               <p className="text-center">
-                Tree updates with Geo-Coordinates are sent to donors for utmost
-                transparency
+                Providing tree updates with geo-coordinates to donors for utmost
+                transparency.
               </p>
             </div>
           </div>
@@ -67,24 +61,19 @@ return(
               <img
                 src="https://sankalptaru.org/wp-content/themes/sankalptaru/dist/images/Home Page/rogh 1.png"
                 className="w-16 h-16"
-                alt=""
+                alt="Challenging Terrains Icon"
               />
-              <h4 className="font-playfair font-bold text-lg mt-4">
-                Challenging Terrains
+              <h4 className="font-bold text-xl mt-4">
+                Overcoming Tough Terrains
               </h4>
               <p className="text-center">
-                We mitigate through tough terrains PAN India to support our
-                farmer beneficiaries and environment
+                Mitigating challenges in challenging terrains across India to
+                support our farmers and the environment.
               </p>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-
-)
-
-
-
+  );
 }
