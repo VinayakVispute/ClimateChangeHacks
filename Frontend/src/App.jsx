@@ -4,7 +4,7 @@ import Navbar from "./Componets/Navbar";
 import EventForm from "./Componets/EventForm";
 import { Route, Routes } from "react-router-dom";
 
-import Homepage from "./Componets/Pages/Homepage";
+import Homepage from "./Componets/Pages/HomePage/Homepage";
 import Result from "./Componets/Pages/Result";
 import Card from "./Componets/Card";
 import Description from "./Componets/Description";
