@@ -14,8 +14,6 @@ export default function EventForm() {
   const [mediumFlights, setmediumFlights] = useState("");
   const [shortFlights, setshortFlights] = useState("");
   const [hotel, sethotel] = useState("");
-
-  //VInayak VIspute is Genius and Real OG
   const [AverageTravel, setAverageTravel] = useState("");
   const [AverageTravelForMetro, setAverageTravelForMetro] = useState("");
   const [isChecked, setIsChecked] = useState(false);
@@ -28,19 +26,6 @@ export default function EventForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    console.log(`NumResidents: ${NumResidents}`);
-    console.log(`LivingType: ${LivingType}`);
-    console.log(`HouseSize: ${HouseSIze}`);
-    console.log(`cleanEnergy: ${cleanEnergy}`);
-    console.log(`Recycle: ${Recycle}`);
-    console.log(`DietType: ${DietType}`);
-    console.log(`LongFlights: ${LongFlights}`);
-    console.log(`shortFlights: ${shortFlights}`);
-    console.log(`mediumFlights: ${mediumFlights}`);
-    console.log(`hotel: ${hotel}`);
-    console.log(`selectedOptions: ${selectedOptions}`);
-
     setissubmit(true);
   };
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -110,7 +95,7 @@ export default function EventForm() {
       ) : (
         <form onSubmit={handleSubmit} className="flex flex-col gap-9 p-2 ">
           <section>
-            <h1 className="w-full font-extrabold my-6 border border-gray-200 dark:border-gray-700 rounded-lg text-4xl text-black  py-2 ">
+            <h1 className="w-full font-extrabold my-6 border border-gray-200 dark:border-gray-700 rounded-lg text-4xl text-black dark:text-white  py-2 ">
               Household Section
             </h1>
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">

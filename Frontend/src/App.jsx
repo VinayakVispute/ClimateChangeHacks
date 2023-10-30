@@ -13,6 +13,7 @@ import ErrorPage from "./Componets/ErrorPage";
 import { useAuth0 } from "@auth0/auth0-react";
 import Spinner from "./Componets/Spinner";
 import Account from "./Componets/Account";
+import Test from "./Componets/Test";
 
 export default function App() {
   const { isLoading } = useAuth0();
@@ -33,6 +34,7 @@ export default function App() {
         <Route path="/Description" element={<Description />} />
         <Route path="/Cart" element={<Cart />} />
         <Route path="/Certi" element={<Cert />} />
+        <Route path="/Test" element={<Test />} />
         <Route path="/Account" element={<Account />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
