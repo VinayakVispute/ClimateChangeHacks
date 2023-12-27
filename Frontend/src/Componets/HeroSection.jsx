@@ -17,7 +17,7 @@ export default function HeroSection() {
             >
               <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>
             </svg>
-            Hero Section{" "}
+            Hero Section
           </div>
           <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
             EcoFootprintSolutions:
@@ -27,7 +27,7 @@ export default function HeroSection() {
           </h1>
           <div className="flex justify-center py-4">
             <img
-              src="https://res.cloudinary.com/djqjag779/image/upload/f_auto,q_auto/ddphrqgrbsr2elbqxbad"
+              src="https://res.cloudinary.com/djqjag779/image/upload/v1703231542/k0kasra1kk5gvdj6xtdm.png"
               className="rounded-lg h-[35rem]"
               alt="Hero Image"
             />

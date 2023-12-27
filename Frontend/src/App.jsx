@@ -1,4 +1,3 @@
-import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./Componets/Navbar";
 import EventForm from "./Componets/EventForm";
@@ -14,6 +13,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Spinner from "./Componets/Spinner";
 import Account from "./Componets/Account";
 import Test from "./Componets/Test";
+import VerifiedUser from "./Componets/Pages/VerifiedUser";
+import UserVerificationDone from "./Componets/Pages/UserVerificationDone";
 
 export default function App() {
   const { isLoading } = useAuth0();
@@ -29,12 +30,13 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/EventForm" element={<EventForm />} />
+        <Route path="/sendVerificationMail/:id" element={<VerifiedUser />} />
+        <Route path="/verify/:id" element={<UserVerificationDone />} />
         <Route path="/Result" element={<Result />} />
         <Route path="/Card" element={<Card />} />
         <Route path="/Description" element={<Description />} />
         <Route path="/Cart" element={<Cart />} />
         <Route path="/Certi" element={<Cert />} />
-        <Route path="/Test" element={<Test />} />
         <Route path="/Account" element={<Account />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>

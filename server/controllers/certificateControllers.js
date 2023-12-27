@@ -3,11 +3,21 @@ const Certificate = require("../models/certification");
 // Controller method to add a new certificate
 exports.addCertificate = async (req, res) => {
   try {
+    const { numTrees, Description, treeName, occasion } = req.body;
+    console.log(numTrees, Description, treeName, occasion);
     const newCertificate = await Certificate.create(req.body);
-    res.status(201).json(newCertificate);
+    res.status(201).json({
+      success: true,
+      message: "Certificate added successfully",
+      data: newCertificate,
+    });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Error adding certificate" });
+    res.status(500).json({
+      success: false,
+      message: "Error adding certificate",
+      error: error.message,
+    });
   }
 };
 

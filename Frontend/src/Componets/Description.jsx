@@ -13,10 +13,16 @@ export default function Description({ Descriptions, url }) {
     console.log("Submitted!");
     setsubmit(true);
   };
+  console.log("description", Descriptions, url);
   return (
     <>
       {submit ? (
-        <Cart numTrees={numTrees} treeName={treeName} occasion={occasion} />
+        <Cart
+          numTrees={numTrees}
+          treeName={treeName}
+          occasion={occasion}
+          Description={Descriptions}
+        />
       ) : (
         <div class="max-w-md w-full bg-white shadow-lg rounded-lg overflow-hidden mt-4">
           <div class="relative">

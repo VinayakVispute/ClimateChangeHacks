@@ -9,6 +9,8 @@ router.get(
   "/get-certificate/:certId",
   CertificateController.getCertificateById
 );
+
+router.post("/add-certificate", CertificateController.addCertificate);
 router.get(
   "/get-certificates-by-user/:userId",
   CertificateController.getCertificatesByUserId

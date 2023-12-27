@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import CarbonFootprintCalculator from "./CarbonFootprintCalculator";
-import { Navigate, useNavigate } from "react-router-dom";
 import Result from "./Pages/Result";
 
 export default function EventForm() {
@@ -22,7 +20,7 @@ export default function EventForm() {
   const [isChecked3, setIsChecked3] = useState(false);
   const [AnnualMileage, setAnnualMileage] = useState("");
   const [fueleconomy, setfueleconomy] = useState("");
-  const [issubmit, setissubmit] = useState("");
+  const [issubmit, setissubmit] = useState();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -66,8 +64,9 @@ export default function EventForm() {
   const handleOptionChange3 = (event3) => {
     setIsChecked3(event3.target.checked);
   };
+
   return (
-    <div className="w-full tap-highlight-transparent text-base antialiased text-opacity-87 bg-white dark:bg-gray-900">
+    <section className="bg-white dark:bg-gray-900 min-w-full max-h-full">
       {issubmit ? (
         <div>
           <Result
@@ -93,221 +92,260 @@ export default function EventForm() {
           />
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="flex flex-col gap-9 p-2 ">
-          <section>
-            <h1 className="w-full font-extrabold my-6 border border-gray-200 dark:border-gray-700 rounded-lg text-4xl text-black dark:text-white  py-2 ">
-              Household Section
-            </h1>
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label
-                className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4"
-                htmlFor="NumResidents"
-              >
-                Number of residents including myself:
-              </label>
+        <div className="py-8 px-4 mx-auto max-w-4xl lg:py-16">
+          <h1 className="flex items-center text-5xl font-extrabold dark:text-white mb-8">
+            EcoFootprint
+            <span className="bg-blue-100 text-blue-800 text-2xl font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-2">
+              Calculator
+            </span>
+          </h1>
+          <hr className="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
 
-              <select
-                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="NumResidents"
-                value={NumResidents}
-                onChange={(event) => setNumResidents(event.target.value)}
-              >
-                <option value="">Select your option</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6+">5</option>
-              </select>
-            </div>
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label
-                className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4"
-                htmlFor="LivingType"
-              >
-                I live in a(n)
-              </label>
-              <select
-                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="LivingType"
-                value={LivingType}
-                onChange={(event) => setLivingType(event.target.value)}
-              >
-                <option value="">Select your option</option>
-                <option value="Detached Single family home">
-                  Detached Single family home
-                </option>
-                <option value="attached Single family home">
-                  attached Single family home
-                </option>
-                <option value="Apartment">Apartment</option>
-                {/* <option value="Detached Single family home">Detached Single family home</option> */}
-              </select>
-            </div>
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label
-                htmlFor="HouseSIze"
-                className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4"
-              >
-                Size of house
-              </label>
-              <select
-                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="HouseSIze"
-                value={HouseSIze}
-                onChange={(event) => setHouseSIze(event.target.value)}
-              >
-                <option value="">Select your option</option>
-                <option value="Under 500 sq ft">Under 500 sq ft</option>
-                <option value="500-1000 sq ft">500-1000 sq ft</option>
-                <option value="1000-1500 sq ft">1000-1500 sq ft</option>
-                <option value="1500-2000 sq ft">1500-2000 sq ft</option>
-              </select>
-            </div>
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label
-                className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4"
-                htmlFor="cleanEnergy"
-              >
-                Do you purchase clean energy such as wind or solar?
-              </label>
-              <select
-                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="cleanEnergy"
-                value={cleanEnergy}
-                onChange={(event) => setcleanEnergy(event.target.value)}
-              >
-                <option value="">Select your option</option>
-                <option value="Yes,some">Yes,some</option>
-                <option value="Yes,most">Yes,most</option>
-                <option value="Yes,all">Yes,all</option>
-                <option value="No">No</option>
-              </select>
-            </div>
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label
-                className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4"
-                htmlFor="Recycle"
-              >
-                Do you recycle items such as metal, plastic, glass, or paper?
-              </label>
-              <select
-                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="Recycle"
-                value={Recycle}
-                onChange={(event) => setRecycle(event.target.value)}
-              >
-                <option value="">Select your option</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </div>
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label
-                className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4"
-                htmlFor="DietType"
-              >
-                My diet is mostly:
-              </label>
-              <select
-                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="DietType"
-                value={DietType}
-                onChange={(event) => setDietType(event.target.value)}
-              >
-                <option value="">Select your option</option>
-                <option value="Vegetarian">Vegetarian</option>
-                <option value="Non-Vegetarian">Non-Vegetarian</option>
-                <option value="No beef">No beef</option>
-                <option value="Vegan">Vegan</option>
-              </select>
-            </div>
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label
-                className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4"
-                htmlFor="carDistance"
-              >
-                Do you make a conscious effort to save energy? Check all that
-                apply.
-              </label>
-              {options.map((option) => (
-                <div key={option.value}>
-                  <label className=" text-left md:w-2/3 block text-gray-500 font-bold">
+          <form onSubmit={handleSubmit}>
+            <h2 className="text-4xl font-extrabold dark:text-white my-8">
+              Household Section
+            </h2>
+            <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="NumResidents"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Number of residents including myself:
+                </label>
+                <select
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  id="NumResidents"
+                  value={NumResidents}
+                  onChange={(event) => setNumResidents(event.target.value)}
+                >
+                  <option value="">Select your option</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6+">5</option>
+                </select>
+              </div>
+              <div className="w-full">
+                <label
+                  htmlFor="LivingType"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  I live in a(n)
+                </label>
+                <select
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  id="LivingType"
+                  value={LivingType}
+                  onChange={(event) => setLivingType(event.target.value)}
+                >
+                  <option value="">Select your option</option>
+                  <option value="Detached Single family home">
+                    Detached Single family home
+                  </option>
+                  <option value="attached Single family home">
+                    attached Single family home
+                  </option>
+                  <option value="Apartment">Apartment</option>
+                </select>
+              </div>
+              <div className="w-full">
+                <label
+                  htmlFor="HouseSIze"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Size of house
+                </label>
+                <select
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  id="HouseSIze"
+                  value={HouseSIze}
+                  onChange={(event) => setHouseSIze(event.target.value)}
+                >
+                  <option value="">Select your option</option>
+                  <option value="Under 500 sq ft">Under 500 sq ft</option>
+                  <option value="500-1000 sq ft">500-1000 sq ft</option>
+                  <option value="1000-1500 sq ft">1000-1500 sq ft</option>
+                  <option value="1500-2000 sq ft">1500-2000 sq ft</option>
+                </select>
+              </div>
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="cleanEnergy"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Do you purchase clean energy such as wind or solar?
+                </label>
+                <select
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  id="cleanEnergy"
+                  value={cleanEnergy}
+                  onChange={(event) => setcleanEnergy(event.target.value)}
+                >
+                  <option value="">Select your option</option>
+                  <option value="Yes,some">Yes,some</option>
+                  <option value="Yes,most">Yes,most</option>
+                  <option value="Yes,all">Yes,all</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <div className="w-full">
+                <label
+                  htmlFor="Recycle"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Do you recycle items such as metal, plastic, glass, or paper?
+                </label>
+                <select
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  id="Recycle"
+                  value={Recycle}
+                  onChange={(event) => setRecycle(event.target.value)}
+                >
+                  <option value="">Select your option</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <div className="w-full">
+                <label
+                  htmlFor="DietType"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  My diet is mostly:
+                </label>
+                <select
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  id="DietType"
+                  value={DietType}
+                  onChange={(event) => setDietType(event.target.value)}
+                >
+                  <option value="">Select your option</option>
+                  <option value="Vegetarian">Vegetarian</option>
+                  <option value="Non-Vegetarian">Non-Vegetarian</option>
+                  <option value="No beef">No beef</option>
+                  <option value="Vegan">Vegan</option>
+                </select>
+              </div>
+              <div className="w-full">
+                <label
+                  htmlFor="carDistance"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Do you make a conscious effort to save energy? Check all that
+                  apply.
+                </label>
+                {options.map((option) => (
+                  <div key={option.value} className="flex items-center mb-4">
                     <input
+                      id={`checkbox-${option.value}`}
                       type="checkbox"
-                      className="mr-2 leading-tight"
                       value={option.value}
                       checked={selectedOptions.includes(option.value)}
                       onChange={handleCheckboxChange}
+                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                     />
-                    <span class="text-sm">{option.label}</span>
-                  </label>
-                </div>
-              ))}
+                    <label
+                      htmlFor={`checkbox-${option.value}`}
+                      className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    >
+                      {option.label}
+                    </label>
+                  </div>
+                ))}
+              </div>
             </div>
-          </section>
-          <section>
-            <section>
-              <h1 className="w-full font-extrabold my-6 border border-gray-200 dark:border-gray-700 rounded-lg text-4xl text-black  py-2 ">
-                Transport Section
-              </h1>
-
-              <div>
-                <label className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4">
-                  Select all of the ways you travel :{" "}
+            <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
+            <h2 className="text-4xl font-extrabold dark:text-white my-8">
+              Transport Section
+            </h2>
+            <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
+              <div className="sm:col-span-2">
+                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  Select all of the ways you travel
                 </label>
-
-                <label className="text-left md:w-2/3 block text-gray-500 font-bold">
+                {/* --- */}
+                <div className="flex items-center mb-4">
                   <input
-                    className="mr-2 leading-tight"
+                    id="Intercity/Commuter Rail"
                     type="checkbox"
+                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                     checked={isChecked}
                     onChange={handleOptionChange}
                   />
-                  <span class="text-sm">Intercity/Commuter Rail</span>
-                </label>
-
-                <label className="text-left md:w-2/3 block text-gray-500 font-bold">
+                  <label
+                    htmlFor="Intercity/Commuter Rail"
+                    className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  >
+                    Intercity/Commuter Rail
+                  </label>
+                </div>
+                {/* --- */}
+                <div className="flex items-center mb-4">
                   <input
+                    id="Bus/Subway/Metro"
                     type="checkbox"
-                    className="mr-2 leading-tight"
+                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                     checked={isChecked1}
                     onChange={handleOptionChange1}
                   />
-                  <span class="text-sm">Bus/Subway/Metro</span>
-                </label>
-
-                <label className=" text-left md:w-2/3 block text-gray-500 font-bold">
+                  <label
+                    className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    htmlFor="Bus/Subway/Metro"
+                  >
+                    Bus/Subway/Metro
+                  </label>
+                </div>
+                {/* --- */}
+                <div className="flex items-center mb-4">
                   <input
-                    className="mr-2 leading-tight"
+                    id="Car"
                     type="checkbox"
+                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                     checked={isChecked2}
                     onChange={handleOptionChange2}
                   />
-                  <span class="text-sm">Car</span>
-                </label>
-                <label className=" text-left md:w-2/3 block text-gray-500 font-bold">
+                  <label
+                    className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    htmlFor="Car"
+                  >
+                    Car
+                  </label>
+                </div>
+                {/* --- */}
+                <div className="flex items-center mb-4">
                   <input
-                    className="mr-2 leading-tight"
                     type="checkbox"
+                    id="Bike/Walk"
+                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                     checked={isChecked3}
                     onChange={handleOptionChange3}
                   />
-                  <span>Bike/Walk</span>
-                </label>
+                  <label
+                    className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    htmlFor="Bike/Walk"
+                  >
+                    Bike/Walk
+                  </label>
+                </div>
+              </div>
+            </div>
 
-                {isChecked && (
-                  <div className="w-full md:w-1/2 px-3 pl-0 mb-6 md:mb-0">
+            <div className="sm:col-span-2  gap-4 sm:gap-6 space-y-8">
+              {isChecked && (
+                <div>
+                  <div className="sm:col-span-2 ">
                     <label
-                      className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4"
                       htmlFor="AverageTravel"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
                       Average total weekly travel via intercity or commuter
                       rail...
                     </label>
                     <select
-                      className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       id="AverageTravel"
                       value={AverageTravel}
                       onChange={(event) => setAverageTravel(event.target.value)}
@@ -326,17 +364,19 @@ export default function EventForm() {
                       <option value="30+ Miles">30+ Miles</option>
                     </select>
                   </div>
-                )}
-                {isChecked1 && (
-                  <div className="w-full md:w-1/2 px-3 pl-0 mb-6 md:mb-0">
+                </div>
+              )}
+              {isChecked1 && (
+                <div>
+                  <div className="sm:col-span-2">
                     <label
-                      className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4"
                       htmlFor="AverageTravelForMetro"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
                       Average total weekly travel via bus, subway, or metro...
                     </label>
                     <select
-                      className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       id="AverageTravelForMetro"
                       value={AverageTravelForMetro}
                       onChange={(event) =>
@@ -357,30 +397,40 @@ export default function EventForm() {
                       <option value="30+ Miles">30+ Miles</option>
                     </select>
                   </div>
-                )}
-                {isChecked2 && (
-                  <div className="w-full md:w-1/2 px-3 pl-0 mb-6 md:mb-0">
-                    <label className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4">
+                </div>
+              )}
+              {isChecked2 && (
+                <div className="sm:col-span-2  gap-4 sm:gap-6 space-y-8">
+                  <div className="sm:col-span-2">
+                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                       My car is an electric vehicle
                     </label>
-                    <label className="text-left md:w-2/3 block text-gray-500 font-bold">
+                    <div className="flex items-center mb-4">
                       <input
+                        id="CarIsElectricVehicle"
                         type="checkbox"
-                        className="mr-2 leading-tight"
+                        className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                         value="Yes"
                         checked={selectedOptions.includes(option1)}
                         onChange={handleCheckboxChange}
                       />
-                      <span class="text-sm">Yes, Car is Electric Vehicle</span>
-                    </label>
+                      <label
+                        htmlFor="CarIsElectricVehicle"
+                        className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        Yes, Car is Electric Vehicle
+                      </label>
+                    </div>
+                  </div>
+                  <div className="sm:col-span-2">
                     <label
-                      className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4"
                       htmlFor="AnnualMileage"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
                       My annual mileage is...
                     </label>
                     <select
-                      className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       id="AnnualMileage"
                       value={AnnualMileage}
                       onChange={(event) => setAnnualMileage(event.target.value)}
@@ -409,12 +459,16 @@ export default function EventForm() {
                       </option>
                       <option value="30,000 + Miles">30,000 + Miles</option>
                     </select>
-
-                    <label className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4">
-                      My vehicle’s combined fuel economy is...
+                  </div>
+                  <div className="sm:col-span-2">
+                    <label
+                      htmlFor="AnnualMileage"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      My vehicle's combined fuel economy is...
                     </label>
                     <select
-                      className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       id="fueleconomy"
                       value={fueleconomy}
                       onChange={(event) => setfueleconomy(event.target.value)}
@@ -436,119 +490,135 @@ export default function EventForm() {
                       <option value="80-99 MPG">80-99 MPG </option>
                     </select>
                   </div>
-                )}
-              </div>
-            </section>
-            <h1 className="w-full font-extrabold my-6 border border-gray-200 dark:border-gray-700 rounded-lg text-4xl text-black  py-2 ">
+                </div>
+              )}
+            </div>
+            <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
+            <h2 className="text-4xl font-extrabold dark:text-white my-8">
               Travel Section
-            </h1>
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label
-                className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4"
-                htmlFor="LongFlights"
-              >
-                Number of long round-trip flights (2500+ miles) I make in a year
-              </label>
-              <select
-                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="LongFlights"
-                value={LongFlights}
-                onChange={(event) => setLongFlights(event.target.value)}
-              >
-                <option value="">Select your option</option>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5-9">5 to 9</option>
-                <option value="9-14">9-14</option>
-              </select>
+            </h2>
+            <div className="sm:col-span-2  gap-4 sm:gap-6 space-y-8">
+              <div className="w-full">
+                <label
+                  htmlFor="LongFlights"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Number of long round-trip flights (2500+ miles) I make in a
+                  year
+                </label>
+                <select
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  id="LongFlights"
+                  value={LongFlights}
+                  onChange={(event) => setLongFlights(event.target.value)}
+                >
+                  <option value="">Select your option</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5-9">5 to 9</option>
+                  <option value="9-14">9-14</option>
+                </select>
+              </div>
+              <div className="w-full">
+                <label
+                  htmlFor="mediumFlights"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Number of medium round-trip flights (300-2500 miles one way) I
+                  make in a year
+                </label>
+                <select
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  id="mediumFlights"
+                  value={mediumFlights}
+                  onChange={(event) => setmediumFlights(event.target.value)}
+                >
+                  <option value="">Select your option</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5-9">5 to 9</option>
+                  <option value="9-14">9-14</option>
+                </select>
+              </div>
+              <div className="w-full">
+                <label
+                  htmlFor="shortFlights"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Number of short round-trip flights less than 300 miles one way
+                  I make in a year
+                </label>
+                <select
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  id="shortFlights"
+                  value={shortFlights}
+                  onChange={(event) => setshortFlights(event.target.value)}
+                >
+                  <option value="">Select your option</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5-9">5 to 9</option>
+                  <option value="9-14">9-14</option>
+                </select>
+              </div>
+              <div className="w-full">
+                <label
+                  htmlFor="hotel"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Average number of nights spent in a hotel per year
+                </label>
+                <select
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  id="hotel"
+                  value={hotel}
+                  onChange={(event) => sethotel(event.target.value)}
+                >
+                  <option value="">Select your option</option>
+                  <option value="0">0</option>
+                  <option value="1 to 2 nights">1 to 2 nights</option>
+                  <option value="3-4 nights">3 to 4 nights</option>
+                  <option value="5-6 nights">5 to 6 nights</option>
+                  <option value="1-2 weeks">1-2 weeks</option>
+                  <option value="3-4 weeks">3-4 weeks</option>
+                  <option value="1-2 months">1-2 months</option>
+                </select>
+              </div>
             </div>
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label
-                className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4"
-                htmlFor="mediumFlights"
+            <div className="my-8">
+              <button
+                type="submit"
+                className="bg-blue-500 hover:bg-blue-600 text-white  py-2 px-4 rounded-sm flex items-center justify-center"
               >
-                Number of medium round-trip flights (300-2500 miles one way) I
-                make in a year
-              </label>
-              <select
-                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="mediumFlights"
-                value={mediumFlights}
-                onChange={(event) => setmediumFlights(event.target.value)}
-              >
-                <option value="">Select your option</option>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5-9">5 to 9</option>
-                <option value="9-14">9-14</option>
-              </select>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  className="h-5 w-5 mr-2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+                Submit
+              </button>
             </div>
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label
-                className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4"
-                htmlFor="shortFlights"
-              >
-                Number of short round-trip flights less than 300 miles one way I
-                make in a year
-              </label>
-              <select
-                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="shortFlights"
-                value={shortFlights}
-                onChange={(event) => setshortFlights(event.target.value)}
-              >
-                <option value="">Select your option</option>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5-9">5 to 9</option>
-                <option value="9-14">9-14</option>
-              </select>
-            </div>
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label
-                className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4"
-                htmlFor="hotel"
-              >
-                Average number of nights spent in a hotel per year
-              </label>
-              <select
-                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="hotel"
-                value={hotel}
-                onChange={(event) => sethotel(event.target.value)}
-              >
-                <option value="">Select your option</option>
-                <option value="0">0</option>
-                <option value="1 to 2 nights">1 to 2 nights</option>
-                <option value="3-4 nights">3 to 4 nights</option>
-                <option value="5-6 nights">5 to 6 nights</option>
-                <option value="1-2 weeks">1-2 weeks</option>
-                <option value="3-4 weeks">3-4 weeks</option>
-                <option value="1-2 months">1-2 months</option>
-              </select>
-            </div>
-          </section>
-
-          <div>
-            <button
-              type="submit"
-              class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-              width="100px"
-            >
-              Submit
-            </button>
-          </div>
-        </form>
+          </form>
+        </div>
       )}
-    </div>
+    </section>
   );
 }

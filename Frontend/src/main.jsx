@@ -6,17 +6,25 @@ import App from "./App.jsx";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <Auth0Provider
-    domain="dev-l22usso1nsyu8amx.us.auth0.com"
-    clientId="lZED13jKLBuztrIrecEI3RvKAoQ9fes6"
-    authorizationParams={{
-      redirect_uri: window.location.origin,
-    }}
-  >
-    <React.StrictMode>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </React.StrictMode>
-  </Auth0Provider>
+  <BrowserRouter>
+    <Auth0Provider
+      domain="dev-ybh302xorvllwlkr.us.auth0.com"
+      clientId="mRAZ6cyOCfrDeJDG8b6JkLvk0q1F3KxU"
+      authorizationParams={{
+        redirect_uri: window.location.origin,
+      }}
+    >
+      <App />
+    </Auth0Provider>
+  </BrowserRouter>
 );
+
+// <Auth0Provider
+//   domain="dev-ybh302xorvllwlkr.us.auth0.com"
+//   clientId="mRAZ6cyOCfrDeJDG8b6JkLvk0q1F3KxU"
+//   authorizationParams={{
+//     redirect_uri: window.location.origin,
+//   }}
+//</Auth0Provider>
+
+// >

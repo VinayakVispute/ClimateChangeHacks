@@ -11,7 +11,6 @@ const ErrorPage = () => {
         {/* Define the gradient for dark mode */}
         <div className="w-9/12 m-auto py-16 min-h-screen flex items-center justify-center">
           <div className="bg-white dark:bg-gray-900 shadow overflow-hidden sm:rounded-lg pb-8">
-            {" "}
             {/* Define the background for dark mode */}
             <div className="border-t border-gray-200 text-center pt-8">
               <h1 className="text-9xl font-bold text-purple-400 dark:text-white">
@@ -21,7 +20,6 @@ const ErrorPage = () => {
                 Oops! Page not found
               </h1>
               <p className="text-2xl pb-8 px-12 font-medium dark:text-gray-400">
-                {" "}
                 {/* Define text color for dark mode */}
                 Oops! The page you are looking for does not exist. It might have
                 been moved or deleted.

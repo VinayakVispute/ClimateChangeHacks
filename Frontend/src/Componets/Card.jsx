@@ -21,7 +21,7 @@ const Card = () => {
   const handleSubmit1 = (event) => {
     event.preventDefault();
     console.log("Submitted!");
-    const newDescription = description1;
+    const newDescription = name1;
     setDescription(newDescription);
     const newUrl = urls[3];
     setUrl(newUrl);
@@ -31,7 +31,7 @@ const Card = () => {
   const handleSubmit2 = (event) => {
     event.preventDefault();
     console.log("Submitted!");
-    const newDescription = description2;
+    const newDescription = name2;
     setDescription(newDescription);
     const newUrl = urls[2];
     setUrl(newUrl);
@@ -41,7 +41,7 @@ const Card = () => {
   const handleSubmit3 = (event) => {
     event.preventDefault();
     console.log("Submitted!");
-    const newDescription = description3;
+    const newDescription = name3;
     setDescription(newDescription);
     const newUrl = urls[1];
     setUrl(newUrl);
@@ -51,7 +51,7 @@ const Card = () => {
   const handleSubmit4 = (event) => {
     event.preventDefault();
     console.log("Submitted!");
-    const newDescription = description4;
+    const newDescription = name4;
     setDescription(newDescription);
     const newUrl = urls[0];
     setUrl(newUrl);
@@ -81,7 +81,11 @@ const Card = () => {
     "https://s3-ap-south-1.amazonaws.com/sankalptaru-web/wp-content/uploads/2023/03/02075425/153X-1672298924-500x500.jpg",
     "https://s3-ap-south-1.amazonaws.com/sankalptaru-web/wp-content/uploads/2023/03/24105714/ETMy-1649053863-600x600.jpg",
   ];
-
+  const name1 = "Project Harit Himachal";
+  const name2 = "#TaxFreeTrees";
+  const name3 = "Zodiac Vṛścika – Scorpio (Guava)";
+  const name4 = "Trees For Air Pollution";
+  const name5 = "My Environment and Earth";
   return (
     <>
       {submit ? (

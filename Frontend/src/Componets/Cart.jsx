@@ -1,13 +1,21 @@
 import React from "react";
 import { useState } from "react";
+import axios from "axios";
 import CertificateSelector from "./CertificateSelection";
 import Order from "./Pages/Order";
-export default function Cart({ numTrees, treeName, occasion, onSave }) {
+export default function Cart({
+  numTrees,
+  treeName,
+  occasion,
+  onSave,
+  Description,
+}) {
   const [selectedImage, setSelectedImage] = useState("");
   const [promoCode, setPromoCode] = useState("");
   const [discount, setDiscount] = useState(0);
   const [price, setprice] = useState(0);
   const [zeroprice, setzeroprice] = useState(false);
+  const [certificate, setCertificate] = useState(null);
 
   function handleImageChange(event) {
     setSelectedImage(event.target.value);
@@ -49,7 +57,6 @@ export default function Cart({ numTrees, treeName, occasion, onSave }) {
   const [trees, settrees] = useState(numTrees);
   const [treePrice, setTreePrice] = useState(20);
   const [editingDetails, setEditingDetails] = useState(false);
-  const [certificate, setCertificate] = useState("");
   const [certificateType, setCertificateType] = useState("");
   const [Checkout, setCheckout] = useState(false);
   const [save, setsave] = useState(false);
@@ -78,9 +85,41 @@ export default function Cart({ numTrees, treeName, occasion, onSave }) {
     setEditingDetails(false);
     // Save details code goes here
   };
-  const handleCheckout = () => {
-    setCheckout(true);
-    // Save details code goes here
+  const handleCheckout = async () => {
+    console.log(
+      "thsi",
+      numTrees,
+      Description,
+      treeName,
+      occasion,
+      selectedImage
+    );
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/certificate/add-certificate",
+        {
+          noOfTrees: numTrees,
+          nameOnCertificate: treeName,
+          eventName: occasion,
+          nameOFNgo: Description,
+        }
+      );
+      const data = response.data;
+      console.log(response);
+      if (data.success) {
+        console.log("success");
+        console.log(data);
+        alert("Order Placed Successfully");
+        setCertificate(data?.data._id);
+        console.log(data?.data._id);
+        setCheckout(true);
+      } else {
+        alert("Order Failed");
+      }
+    } catch (error) {
+      console.log(error);
+      alert("Order Failed");
+    }
   };
   console.log(trees);
 
@@ -99,7 +138,11 @@ export default function Cart({ numTrees, treeName, occasion, onSave }) {
   return (
     <>
       {Checkout ? (
-        <Order trackingId={trackingId} treeName={name} />
+        <Order
+          trackingId={trackingId}
+          treeName={name}
+          certificateId={certificate}
+        />
       ) : (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="max-w-3xl mx-auto">

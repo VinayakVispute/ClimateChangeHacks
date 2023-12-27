@@ -1,473 +1,109 @@
-import React, { useState } from "react";
-import CarbonFootprintCalculator from "./CarbonFootprintCalculator";
-import { Navigate, useNavigate } from "react-router-dom";
-import Result from "./Pages/Result";
+import {
+  sendSignInLinkToEmailAuth,
+  signInWithGoogle,
+} from "../service/firebase";
+import { useAuth } from "../context/AuthContext";
+import { useState } from "react";
 
-export default function EventForm() {
-  const [NumResidents, setNumResidents] = useState("");
-  const [LivingType, setLivingType] = useState("");
-  const [HouseSIze, setHouseSIze] = useState("");
-  const [cleanEnergy, setcleanEnergy] = useState("");
-  const [Recycle, setRecycle] = useState("");
-  const [DietType, setDietType] = useState("");
-  const [LongFlights, setLongFlights] = useState("");
-  const [mediumFlights, setmediumFlights] = useState("");
-  const [shortFlights, setshortFlights] = useState("");
-  const [hotel, sethotel] = useState("");
-  const [AverageTravel, setAverageTravel] = useState("");
-  const [AverageTravelForMetro, setAverageTravelForMetro] = useState("");
-  const [isChecked, setIsChecked] = useState(false);
-  const [isChecked1, setIsChecked1] = useState(false);
-  const [isChecked2, setIsChecked2] = useState(false);
-  const [isChecked3, setIsChecked3] = useState(false);
-  const [AnnualMileage, setAnnualMileage] = useState("");
-  const [fueleconomy, setfueleconomy] = useState("");
-  const [issubmit, setissubmit] = useState(false);
-  const [selectedOptions, setSelectedOptions] = useState([]);
-
-  const options = [
-    {
-      value: "I have programmable thermostat",
-      label: "I have programmable thermostat",
-    },
-    {
-      value: "I use energy star appliances",
-      label: "I use energy star appliances",
-    },
-    {
-      value: "I use energy efficient lightbulbs",
-      label: "I use energy efficient lightbulbs",
-    },
-    { value: "I line dry my laundry", label: "I line dry my laundry" },
-  ];
-
-  const handleCheckboxChange = (event) => {
-    const value = event.target.value;
-    if (selectedOptions.includes(value)) {
-      setSelectedOptions(selectedOptions.filter((option) => option !== value));
-    } else {
-      setSelectedOptions([...selectedOptions, value]);
-    }
+const AuthenticationPage = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
-  const option1 = "Yes";
-  const handleOptionChange = (event) => {
-    setIsChecked(event.target.checked);
-  };
-  const handleOptionChange1 = (event1) => {
-    setIsChecked1(event1.target.checked);
-  };
-  const handleOptionChange2 = (event2) => {
-    setIsChecked2(event2.target.checked);
-  };
-  const handleOptionChange3 = (event3) => {
-    setIsChecked3(event3.target.checked);
-  };
-  // Handle similar functions for isChecked1, isChecked2, and isChecked3.
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setissubmit(true);
+  const { loginError } = useAuth();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await sendSignInLinkToEmailAuth(formData.email);
+    console.log("Form submitted with data:", formData);
   };
 
   return (
-    <div
-      className={`w-full tap-highlight-transparent text-base antialiased text-opacity-87 dark:bg-gray-800`}
-    >
-      {issubmit ? (
-        <div>
-          <Result
-            NumResidents={NumResidents}
-            LivingType={LivingType}
-            HouseSize={HouseSIze}
-            cleanEnergy={cleanEnergy}
-            Recycle={Recycle}
-            DietType={DietType}
-            LongFlights={LongFlights}
-            shortFlights={shortFlights}
-            mediumFlights={mediumFlights}
-            hotel={hotel}
-            selectedOptions={selectedOptions}
-            AverageTravel={AverageTravel}
-            AverageTravelForMetro={AverageTravelForMetro}
-            AnnualMileage={AnnualMileage}
-            fueleconomy={fueleconomy}
-            isChecked={isChecked}
-            isChecked1={isChecked1}
-            isChecked2={isChecked2}
-            isChecked3={isChecked3}
+    <section className="bg-gray-50 dark:bg-gray-900 min-h-full min-w-full">
+      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-full lg:py-0">
+        <a
+          href="#"
+          className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
+        >
+          <img
+            className="w-8 h-8 mr-2"
+            src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/v1454244885/ixicv8ysg4ksbzbjwxjg.png"
+            alt="logo"
           />
-        </div>
-      ) : (
-        <form onSubmit={handleSubmit} className="flex flex-col gap-9 p-2 ">
-          <section>
-            <h1
-              className={`w-full font-extrabold my-6 border border-gray-200 dark:border-gray-700 rounded-lg text-4xl text-black py-2 dark:text-white`}
-            >
-              Household Section
+          Ecofootprint
+        </a>
+        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700  min-h-full my-24">
+          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+              Sign in to your account
             </h1>
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label
-                className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4 dark:text-gray-300"
-                htmlFor="NumResidents"
-              >
-                Number of residents including myself:
-              </label>
-
-              <select
-                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
-                id="NumResidents"
-                value={NumResidents}
-                onChange={(event) => setNumResidents(event.target.value)}
-              >
-                <option value="">Select your option</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6+">5</option>
-              </select>
-            </div>
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label
-                className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4 dark:text-gray-300"
-                htmlFor="LivingType"
-              >
-                I live in a(n)
-              </label>
-              <select
-                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
-                id="LivingType"
-                value={LivingType}
-                onChange={(event) => setLivingType(event.target.value)}
-              >
-                <option value="">Select your option</option>
-                <option value="Detached Single family home">
-                  Detached Single family home
-                </option>
-                <option value="attached Single family home">
-                  attached Single family home
-                </option>
-                <option value="Apartment">Apartment</option>
-                {/* <option value="Detached Single family home">Detached Single family home</option> */}
-              </select>
-            </div>
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label
-                htmlFor="HouseSIze"
-                className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4"
-              >
-                Size of house
-              </label>
-              <select
-                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="HouseSIze"
-                value={HouseSIze}
-                onChange={(event) => setHouseSIze(event.target.value)}
-              >
-                <option value="">Select your option</option>
-                <option value="Under 500 sq ft">Under 500 sq ft</option>
-                <option value="500-1000 sq ft">500-1000 sq ft</option>
-                <option value="1000-1500 sq ft">1000-1500 sq ft</option>
-                <option value="1500-2000 sq ft">1500-2000 sq ft</option>
-              </select>
-            </div>
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label
-                className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4"
-                htmlFor="cleanEnergy"
-              >
-                Do you purchase clean energy such as wind or solar?
-              </label>
-              <select
-                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="cleanEnergy"
-                value={cleanEnergy}
-                onChange={(event) => setcleanEnergy(event.target.value)}
-              >
-                <option value="">Select your option</option>
-                <option value="Yes,some">Yes,some</option>
-                <option value="Yes,most">Yes,most</option>
-                <option value="Yes,all">Yes,all</option>
-                <option value="No">No</option>
-              </select>
-            </div>
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label
-                className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4"
-                htmlFor="Recycle"
-              >
-                Do you recycle items such as metal, plastic, glass, or paper?
-              </label>
-              <select
-                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="Recycle"
-                value={Recycle}
-                onChange={(event) => setRecycle(event.target.value)}
-              >
-                <option value="">Select your option</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </div>
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label
-                className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4"
-                htmlFor="DietType"
-              >
-                My diet is mostly:
-              </label>
-              <select
-                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="DietType"
-                value={DietType}
-                onChange={(event) => setDietType(event.target.value)}
-              >
-                <option value="">Select your option</option>
-                <option value="Vegetarian">Vegetarian</option>
-                <option value="Non-Vegetarian">Non-Vegetarian</option>
-                <option value="No beef">No beef</option>
-                <option value="Vegan">Vegan</option>
-              </select>
-            </div>
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label
-                className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4"
-                htmlFor="carDistance"
-              >
-                Do you make a conscious effort to save energy? Check all that
-                apply.
-              </label>
-              {options.map((option) => (
-                <div key={option.value}>
-                  <label className=" text-left md:w-2/3 block text-gray-500 font-bold">
-                    <input
-                      type="checkbox"
-                      className="mr-2 leading-tight"
-                      value={option.value}
-                      checked={selectedOptions.includes(option.value)}
-                      onChange={handleCheckboxChange}
-                    />
-                    <span class="text-sm">{option.label}</span>
-                  </label>
-                </div>
-              ))}
-            </div>
-          </section>
-          <section>
-            <section>
-              <h1
-                className={`w-full font-extrabold my-6 border border-gray-200 dark:border-gray-700 rounded-lg text-4xl text-black py-2 dark:text-white`}
-              >
-                Transport Section
-              </h1>
-
+            <form className="space-y-4 md:space-y-6" action="#">
               <div>
-                <label className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4 dark:text-gray-300">
-                  Select all of the ways you travel :{" "}
+                <label
+                  htmlFor="email"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Your email
                 </label>
-
-                <label className="text-left md:w-2/3 block text-gray-500 font-bold">
-                  <input
-                    className="mr-2 leading-tight"
-                    type="checkbox"
-                    checked={isChecked}
-                    onChange={handleOptionChange}
-                  />
-                  <span class="text-sm">Intercity/Commuter Rail</span>
-                </label>
-
-                <label className="text-left md:w-2/3 block text-gray-500 font-bold">
-                  <input
-                    type="checkbox"
-                    className="mr-2 leading-tight"
-                    checked={isChecked1}
-                    onChange={handleOptionChange1}
-                  />
-                  <span class="text-sm">Bus/Subway/Metro</span>
-                </label>
-
-                <label className=" text-left md:w-2/3 block text-gray-500 font-bold">
-                  <input
-                    className="mr-2 leading-tight"
-                    type="checkbox"
-                    checked={isChecked2}
-                    onChange={handleOptionChange2}
-                  />
-                  <span class="text-sm">Car</span>
-                </label>
-                <label className=" text-left md:w-2/3 block text-gray-500 font-bold">
-                  <input
-                    className="mr-2 leading-tight"
-                    type="checkbox"
-                    checked={isChecked3}
-                    onChange={handleOptionChange3}
-                  />
-                  <span>Bike/Walk</span>
-                </label>
-                {/* Add more checkboxes with similar structure for isChecked1, isChecked2, and isChecked3 */}
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="name@company.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
               </div>
 
-              {isChecked && (
-                <div className="w-full md:w-1/2 px-3 pl-0 mb-6 md:mb-0">
-                  <label
-                    className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4"
-                    htmlFor="AverageTravel"
-                  >
-                    Average total weekly travel via intercity or commuter
-                    rail...
-                  </label>
-                  <select
-                    className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="AverageTravel"
-                    value={AverageTravel}
-                    onChange={(event) => setAverageTravel(event.target.value)}
-                  >
-                    <option value="">Select your option</option>
-                    <option value="0 Miles (Usa Average)">
-                      0 Miles (Usa Average)
-                    </option>
-                    <option value="Under 5 Miles">Under 5 Miles</option>
-                    <option value="Under 5 to 9.9 Miles">
-                      Under 5 to 9.9 Miles
-                    </option>
-                    <option value="10 to 14.9 Miles">10 to 14.9 Miles</option>
-                    <option value="15 to 19.9 Miles">15 to 19.9 Miles</option>
-                    <option value="20 to 29.9 Miles">20 to 29.9 Miles</option>
-                    <option value="30+ Miles">30+ Miles</option>
-                  </select>
-                </div>
-              )}
-              {isChecked1 && (
-                <div className="w-full md:w-1/2 px-3 pl-0 mb-6 md:mb-0">
-                  <label
-                    className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4"
-                    htmlFor="AverageTravelForMetro"
-                  >
-                    Average total weekly travel via bus, subway, or metro...
-                  </label>
-                  <select
-                    className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="AverageTravelForMetro"
-                    value={AverageTravelForMetro}
-                    onChange={(event) =>
-                      setAverageTravelForMetro(event.target.value)
-                    }
-                  >
-                    <option value="">Select your option</option>
-                    <option value="0 Miles (Usa Average)">
-                      0 Miles (Usa Average)
-                    </option>
-                    <option value="Under 5 Miles">Under 5 Miles</option>
-                    <option value="Under 5 to 9.9 Miles">
-                      Under 5 to 9.9 Miles
-                    </option>
-                    <option value="10 to 14.9 Miles">10 to 14.9 Miles</option>
-                    <option value="15 to 19.9 Miles">15 to 19.9 Miles</option>
-                    <option value="20 to 29.9 Miles">20 to 29.9 Miles</option>
-                    <option value="30+ Miles">30+ Miles</option>
-                  </select>
-                </div>
-              )}
-              {isChecked2 && (
-                <div className="w-full md:w-1/2 px-3 pl-0 mb-6 md:mb-0">
-                  <label className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4">
-                    My car is an electric vehicle
-                  </label>
-                  <label className="text-left md:w-2/3 block text-gray-500 font-bold">
-                    <input
-                      type="checkbox"
-                      className="mr-2 leading-tight"
-                      value="Yes"
-                      checked={selectedOptions.includes(option1)}
-                      onChange={handleCheckboxChange}
-                    />
-                    <span class="text-sm">Yes, Car is Electric Vehicle</span>
-                  </label>
-                  <label
-                    className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4"
-                    htmlFor="AnnualMileage"
-                  >
-                    My annual mileage is...
-                  </label>
-                  <select
-                    className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="AnnualMileage"
-                    value={AnnualMileage}
-                    onChange={(event) => setAnnualMileage(event.target.value)}
-                  >
-                    <option value="">Select your option</option>
-                    <option value="Under 1,000 Miles">Under 1,000 Miles</option>
-                    <option value=" 1,000 to 2,499 Miles">
-                      1,000 to 2,499 Miles
-                    </option>
-                    <option value="2,500 to 4,999 Miles">
-                      2,500 to 4,999 Miles
-                    </option>
-                    <option value="5,000 to 9,999 Miles">
-                      5,000 to 9,999 Miles
-                    </option>
-                    <option value="10,000 to 14,999 Miles(USA Average)">
-                      10,000 to 14,999 Miles(USA Average)
-                    </option>
-                    <option value="15,000 to 19,999 Miles">
-                      15,000 to 19,999 Miles
-                    </option>
-                    <option value="20,000 to 29,999 Miles">
-                      20,000 to 29,999 Miles
-                    </option>
-                    <option value="30,000 + Miles">30,000 + Miles</option>
-                  </select>
-
-                  <label className="text-left block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4">
-                    My vehicle’s combined fuel economy is...
-                  </label>
-                  <select
-                    className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="fueleconomy"
-                    value={fueleconomy}
-                    onChange={(event) => setfueleconomy(event.target.value)}
-                  >
-                    <option value="Select your option">
-                      Select your option
-                    </option>
-                    <option value="0 to 14 MPG">0 to 14 MPG</option>
-                    <option value="15-19 MPG">15-19 MPG</option>
-                    <option value="20-24 MPG (US Average)">
-                      20-24 MPG (US Average)
-                    </option>
-                    <option value="25-29 MPG">25-29 MPG </option>
-                    <option value="30-34 MPG">30-34 MPG </option>
-                    <option value="35-39 MPG">35-39 MPG </option>
-                    <option value="40-49 MPG">40-49 MPG </option>
-                    <option value="50-59 MPG">50-59 MPG </option>
-                    <option value="60-79 MPG">60-79 MPG </option>
-                    <option value="80-99 MPG">80-99 MPG </option>
-                  </select>
-                </div>
-              )}
-            </section>
-          </section>
-
-          <section>
-            <h1
-              className={`w-full font-extrabold my-6 border border-gray-200 dark:border-gray-700 rounded-lg text-4xl text-black py-2 dark:text-white`}
-            >
-              Food Section
-            </h1>
-            {/* Add food-related input fields here */}
-          </section>
-
-          <section>
-            <button
-              className="w-full bg-green-400 hover:bg-green-500 text-white font-bold py-2 px-4 rounded mt-5 focus:outline-none focus:shadow-outline"
-              type="submit"
-            >
-              Calculate
-            </button>
-          </section>
-        </form>
-      )}
-    </div>
+              <div className="flex items-center justify-between"></div>
+              <button
+                onClick={handleSubmit}
+                className="w-full bg-blue-600 text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+              >
+                Sign in
+              </button>
+            </form>
+            <div className="inline-flex items-center justify-center w-full">
+              <hr className="w-64 h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
+              <span className="absolute px-3 font-medium text-gray-900 -translate-x-1/2 bg-white left-1/2 dark:text-white dark:bg-gray-800">
+                or
+              </span>
+            </div>
+            <div className="flex items-center justify-center min-w-full">
+              <button
+                type="button"
+                className="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 me-2 mb-2"
+                onClick={signInWithGoogle}
+              >
+                <svg
+                  className="w-4 h-4 me-2"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 18 19"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M8.842 18.083a8.8 8.8 0 0 1-8.65-8.948 8.841 8.841 0 0 1 8.8-8.652h.153a8.464 8.464 0 0 1 5.7 2.257l-2.193 2.038A5.27 5.27 0 0 0 9.09 3.4a5.882 5.882 0 0 0-.2 11.76h.124a5.091 5.091 0 0 0 5.248-4.057L14.3 11H9V8h8.34c.066.543.095 1.09.088 1.636-.086 5.053-3.463 8.449-8.4 8.449l-.186-.002Z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                Sign in with Google
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
-}
+};
+
+export default AuthenticationPage;

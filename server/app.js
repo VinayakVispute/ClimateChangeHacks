@@ -14,7 +14,7 @@ app.use(
   cors({
     origin: [
       "https://dev-ybh302xorvllwlkr.us.auth0.com",
-      "http://localhost:3000",
+      "http://localhost:5173",
       "https://ecofootprint.netlify.app/",
       "https://ecofootprint.netlify.app",
     ],
