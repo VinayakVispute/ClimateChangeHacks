@@ -12,7 +12,12 @@ const sendVerificationMail = require("./routes/sendVerificationMail");
 require("dotenv").config();
 app.use(
   cors({
-    origin: "*",
+    origin: [
+      "https://dev-ybh302xorvllwlkr.us.auth0.com",
+      "http://localhost:3000",
+      "https://ecofootprint.netlify.app/",
+      "https://ecofootprint.netlify.app",
+    ],
     credentials: true,
   })
 );
